@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboards — Golden Hour</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"/>
   <script defer src="script.js"></script>
 </head>
 <body>
@@ -20,43 +20,50 @@
     </ul>
   </nav>
 
-  <!-- Main Container -->
   <div class="container">
     <h1>Dashboards</h1>
-    <p class="muted">Use the tabs below to switch between the Bitcoin and BVMT Stock dashboards. You may be prompted to sign in to view the embedded Power BI reports.</p>
+    <p class="muted">Choose a tab. If prompted, sign in to view your secure Power BI report.</p>
 
     <!-- Tabs -->
     <div class="tabs">
       <button class="tab active" data-tab="btc">BTC</button>
-      <button class="tab" data-tab="bvmt">Stocks&nbsp;(BVMT)</button>
+      <button class="tab" data-tab="bvmt">Stocks (BVMT)</button>
     </div>
 
-    <!-- Bitcoin Dashboard -->
+    <!-- ===== BTC TAB ===== -->
     <section id="btc" class="tab-pane active">
-      <div class="iframe-wrap">
-        <iframe src="https://app.powerbi.com/reportEmbed?reportId=f8dfb7b3-1433-4bcb-8647-3bcbce4116d3&amp;autoAuth=true&amp;ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730" title="BTC Dashboard"></iframe>
+
+      <!-- Prominent Power BI block -->
+      <div class="card" style="padding:0; overflow:hidden">
+        <div class="iframe-wrap">
+          <!-- Your secure embed: users will get MS sign-in screen if needed -->
+          <iframe
+            title="BTC Dashboard"
+            src="https://app.powerbi.com/reportEmbed?reportId=f8dfb7b3-1433-4bcb-8647-3bcbce4116d3&autoAuth=true&ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
 
-      <div class="spacer"></div>
+      <!-- BTC Forecast Gallery (8 visuals) -->
+      <div class="section">
+        <h2 class="section__title">BTC Forecasts</h2>
+        <p class="muted" style="margin-bottom:10px">
+          Replace the placeholders below with your charts. Upload images with the exact filenames shown.
+        </p>
 
-      <div class="card">
-        <h3>BTC Forecasts</h3>
-        <p class="muted">Replace these placeholders with your SARIMA, Holt–Winters and Prophet charts.</p>
-        <div class="grid-3">
-          <article class="card">
-            <h4>SARIMA Forecast</h4>
-            <img src="btc-forecast1.png" alt="BTC Forecast 1">
-          </article>
-          <article class="card">
-            <h4>Holt–Winters Forecast</h4>
-            <img src="btc-forecast2.png" alt="BTC Forecast 2">
-          </article>
-          <article class="card">
-            <h4>Prophet Forecast</h4>
-            <img src="btc-forecast3.png" alt="BTC Forecast 3">
-          </article>
+        <div class="grid-4">
+          <article class="card"><h4>SARIMA Forecast</h4><img src="btc-forecast1.png" alt="BTC Forecast 1"></article>
+          <article class="card"><h4>Holt–Winters</h4><img src="btc-forecast2.png" alt="BTC Forecast 2"></article>
+          <article class="card"><h4>Prophet</h4><img src="btc-forecast3.png" alt="BTC Forecast 3"></article>
+          <article class="card"><h4>Seasonality</h4><img src="btc-forecast4.png" alt="BTC Forecast 4"></article>
+          <article class="card"><h4>Residuals</h4><img src="btc-forecast5.png" alt="BTC Forecast 5"></article>
+          <article class="card"><h4>Rolling Forecast</h4><img src="btc-forecast6.png" alt="BTC Forecast 6"></article>
+          <article class="card"><h4>Confidence Bands</h4><img src="btc-forecast7.png" alt="BTC Forecast 7"></article>
+          <article class="card"><h4>Error Distribution</h4><img src="btc-forecast8.png" alt="BTC Forecast 8"></article>
         </div>
-        <table class="table">
+
+        <table class="table" style="margin-top:14px">
           <thead><tr><th>Metric</th><th>Value</th></tr></thead>
           <tbody>
             <tr><td>MAPE</td><td>—</td></tr>
@@ -67,48 +74,27 @@
       </div>
     </section>
 
-    <!-- Stocks Dashboard -->
+    <!-- ===== BVMT TAB ===== -->
     <section id="bvmt" class="tab-pane">
-      <div class="iframe-wrap">
-        <!-- Replace # with your secure embed URL for BVMT when available -->
-        <iframe src="#" title="BVMT Dashboard"></iframe>
+      <div class="card" style="padding:0; overflow:hidden">
+        <div class="iframe-wrap">
+          <!-- Replace # with your BVMT secure embed URL when ready -->
+          <iframe title="BVMT Dashboard" src="#"></iframe>
+        </div>
       </div>
 
-      <div class="spacer"></div>
-
-      <div class="card">
-        <h3>Stocks Forecasts</h3>
-        <p class="muted">Replace these placeholders with your forecasts for BVMT stocks.</p>
-        <div class="grid-3">
-          <article class="card">
-            <h4>SARIMA Forecast</h4>
-            <img src="stocks-forecast1.png" alt="Stocks Forecast 1">
-          </article>
-          <article class="card">
-            <h4>Holt–Winters Forecast</h4>
-            <img src="stocks-forecast2.png" alt="Stocks Forecast 2">
-          </article>
-          <article class="card">
-            <h4>Prophet Forecast</h4>
-            <img src="stocks-forecast3.png" alt="Stocks Forecast 3">
-          </article>
+      <div class="section">
+        <h2 class="section__title">Stocks Forecasts</h2>
+        <div class="grid-4">
+          <article class="card"><h4>SARIMA Forecast</h4><img src="stocks-forecast1.png" alt="Stocks Forecast 1"></article>
+          <article class="card"><h4>Holt–Winters</h4><img src="stocks-forecast2.png" alt="Stocks Forecast 2"></article>
+          <article class="card"><h4>Prophet</h4><img src="stocks-forecast3.png" alt="Stocks Forecast 3"></article>
+          <article class="card"><h4>Seasonality</h4><img src="stocks-forecast4.png" alt="Stocks Forecast 4"></article>
         </div>
-        <table class="table">
-          <thead><tr><th>Metric</th><th>Value</th></tr></thead>
-          <tbody>
-            <tr><td>MAPE</td><td>—</td></tr>
-            <tr><td>RMSE</td><td>—</td></tr>
-            <tr><td>Directional Accuracy</td><td>—</td></tr>
-          </tbody>
-        </table>
       </div>
     </section>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 Golden Hour — Data‑Driven Financial Insights.
-  </footer>
-
+  <footer>© 2025 Golden Hour — Data-Driven Financial Insights.</footer>
 </body>
 </html>
