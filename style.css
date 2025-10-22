@@ -1,4 +1,4 @@
-/* === Base Reset === */
+/* === Reset and Base === */
 * {
   margin: 0;
   padding: 0;
@@ -11,191 +11,126 @@ body {
   color: #ffffff;
   line-height: 1.6;
   min-height: 100vh;
+  padding: 0;
 }
 
-/* === Navigation Bar === */
-.navbar {
+/* === Navigation === */
+nav {
+  background-color: #161b29;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #161b29;
-  padding: 1rem 2rem;
   border-bottom: 1px solid #222;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #e0b000;
+  color: #e50914;
   text-decoration: none;
 }
 
-.nav-links {
+nav ul {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
-.nav-links li a {
+nav ul li a {
+  text-decoration: none;
   color: #ffffff;
-  text-decoration: none;
   font-weight: 500;
+  transition: color 0.2s ease-in-out;
 }
 
-.nav-links li a:hover {
-  color: #e0b000;
+nav ul li a:hover,
+nav ul li a.active {
+  color: #e50914;
 }
 
-/* === Hero Section === */
-.hero {
-  padding: 4rem 2rem;
-  text-align: center;
-  background: #1c2233;
-}
-
-.hero-title {
-  font-size: 2.5rem;
-  color: #e0b000;
-  margin-bottom: 1rem;
-}
-
-.hero-subtitle {
-  font-size: 1.1rem;
-  max-width: 720px;
-  margin: 0 auto 2rem;
-  color: #ccc;
-}
-
-.cta-buttons .btn {
-  padding: 0.8rem 1.5rem;
-  border-radius: 5px;
-  text-decoration: none;
-  margin: 0 0.5rem;
-  display: inline-block;
-  font-weight: bold;
-}
-
-.btn.primary {
-  background-color: #e0b000;
-  color: #0f1420;
-}
-
-.btn.secondary {
-  background-color: transparent;
-  color: #e0b000;
-  border: 1px solid #e0b000;
-}
-
-.btn:hover {
-  opacity: 0.9;
-}
-
-/* === Content === */
+/* === Container === */
 .container {
-  max-width: 960px;
+  max-width: 1000px;
   margin: 2rem auto;
-  padding: 0 1rem;
+  padding: 1rem;
 }
 
-.card {
-  background-color: #161b29;
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
-
-/* === Forms === */
+/* === Form Layout === */
 form {
   display: grid;
-  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem 2rem;
+  background-color: #161b29;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+form h2 {
+  grid-column: span 2;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
 }
 
 label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
   font-weight: 500;
-  color: #ccc;
 }
 
-input, select, textarea {
-  padding: 0.7rem;
-  border: 1px solid #333;
-  border-radius: 5px;
-  background-color: #1c2233;
-  color: #fff;
+input,
+select,
+textarea {
   width: 100%;
+  padding: 0.65rem;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background-color: #1c2233;
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
-  border-color: #e0b000;
+  border-color: #e50914;
+}
+
+/* === Full Width Elements === */
+.form-full {
+  grid-column: span 2;
 }
 
 button[type="submit"] {
-  background-color: #e0b000;
-  color: #0f1420;
-  padding: 0.75rem 1.5rem;
+  grid-column: span 2;
+  background-color: #e50914;
+  color: #ffffff;
+  padding: 0.9rem 1.5rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
+  font-size: 1rem;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
 }
 
 button[type="submit"]:hover {
-  opacity: 0.9;
-}
-
-/* === Footer === */
-.footer {
-  text-align: center;
-  padding: 1rem 0;
-  background-color: #0f1420;
-  font-size: 0.85rem;
-  color: #888;
-  border-top: 1px solid #1c2233;
-}
-
-/* === Dashboard Tabs === */
-.tabs {
-  display: flex;
-  border-bottom: 1px solid #333;
-  margin-bottom: 1rem;
-}
-
-.tab {
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  color: #ccc;
-}
-
-.tab.active {
-  border-color: #e0b000;
-  color: #fff;
-}
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
+  background-color: #cc0812;
 }
 
 /* === Responsive === */
 @media (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-    gap: 1rem;
+  form {
+    grid-template-columns: 1fr;
   }
 
-  .hero-title {
-    font-size: 2rem;
-  }
-
-  .btn {
-    display: block;
-    margin: 0.5rem auto;
+  button[type="submit"] {
+    grid-column: span 1;
   }
 }
