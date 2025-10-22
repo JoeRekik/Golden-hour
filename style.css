@@ -1,54 +1,34 @@
-/*
- * Global stylesheet for the Golden Hour static site.
- *
- * This file defines a dark theme inspired by popular trading platforms,
- * with red accent colours and clean typography. Layouts are responsive
- * and accessible on mobile and desktop devices. All pages load this
- * single stylesheet to keep the site easy to maintain.
- */
-
-:root {
-  /* Colour palette */
-  --primary-bg: #0f1420;       /* Dark background */
-  --secondary-bg: #1f2937;     /* Card/background panels */
-  --accent: #e63946;           /* Primary accent (red) */
-  --text-light: #e5e5e5;       /* Light text */
-  --text-dark: #333333;        /* Dark text, seldom used */
-  --card-bg: #111827;          /* Panels and hero backgrounds */
-  --border-radius: 8px;        /* Global corner rounding */
-  --max-width: 1200px;         /* Constrain content width */
-}
-
-/* Base element styles */
-html, body {
+/* === Base Reset === */
+* {
   margin: 0;
   padding: 0;
-  background-color: var(--primary-bg);
-  color: var(--text-light);
-  font-family: Inter, sans-serif;
-  line-height: 1.6;
+  box-sizing: border-box;
 }
+
 body {
-  margin: 0;
-  font-family: Inter, sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: #0f1420;
   color: #ffffff;
   line-height: 1.6;
+  min-height: 100vh;
 }
 
+/* === Navigation Bar === */
 .navbar {
-  background-color: #161b29;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #161b29;
   padding: 1rem 2rem;
+  border-bottom: 1px solid #222;
   box-shadow: 0 2px 5px rgba(0,0,0,0.4);
 }
 
 .logo {
+  font-size: 1.5rem;
   font-weight: bold;
-  font-size: 1.4rem;
   color: #e0b000;
+  text-decoration: none;
 }
 
 .nav-links {
@@ -58,8 +38,8 @@ body {
 }
 
 .nav-links li a {
-  text-decoration: none;
   color: #ffffff;
+  text-decoration: none;
   font-weight: 500;
 }
 
@@ -67,6 +47,7 @@ body {
   color: #e0b000;
 }
 
+/* === Hero Section === */
 .hero {
   padding: 4rem 2rem;
   text-align: center;
@@ -75,14 +56,15 @@ body {
 
 .hero-title {
   font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  color: #e0b000;
+  margin-bottom: 1rem;
 }
 
 .hero-subtitle {
   font-size: 1.1rem;
-  max-width: 700px;
+  max-width: 720px;
   margin: 0 auto 2rem;
-  color: #cccccc;
+  color: #ccc;
 }
 
 .cta-buttons .btn {
@@ -91,289 +73,129 @@ body {
   text-decoration: none;
   margin: 0 0.5rem;
   display: inline-block;
+  font-weight: bold;
 }
 
-.primary {
+.btn.primary {
   background-color: #e0b000;
   color: #0f1420;
 }
 
-.secondary {
-  border: 1px solid #e0b000;
+.btn.secondary {
+  background-color: transparent;
   color: #e0b000;
+  border: 1px solid #e0b000;
 }
 
-.content {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  max-width: 900px;
-  margin: auto;
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* === Content === */
+.container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
 .card {
   background-color: #161b29;
-  padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
+/* === Forms === */
+form {
+  display: grid;
+  gap: 1rem;
+}
+
+label {
+  font-weight: 500;
+  color: #ccc;
+}
+
+input, select, textarea {
+  padding: 0.7rem;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #1c2233;
+  color: #fff;
+  width: 100%;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #e0b000;
+}
+
+button[type="submit"] {
+  background-color: #e0b000;
+  color: #0f1420;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+/* === Footer === */
 .footer {
   text-align: center;
-  padding: 1rem;
+  padding: 1rem 0;
   background-color: #0f1420;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #888;
+  border-top: 1px solid #1c2233;
 }
 
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-/* Navigation bar */
-nav {
-  background-color: var(--secondary-bg);
-  padding: 1rem 2rem;
+/* === Dashboard Tabs === */
+.tabs {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-nav .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--accent);
-}
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  padding: 0;
-}
-nav ul li a {
-  color: var(--text-light);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.2s;
-}
-nav ul li a:hover,
-nav ul li a.active {
-  background-color: var(--accent);
-  color: #ffffff;
-}
-
-/* Main content container */
-main {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 2rem 1rem;
-}
-section {
-  margin-bottom: 2rem;
-}
-
-/* Hero section */
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 3rem 1rem;
-  background: var(--card-bg);
-  border-radius: var(--border-radius);
-}
-.hero h1 {
-  font-size: 2.5rem;
+  border-bottom: 1px solid #333;
   margin-bottom: 1rem;
-  color: var(--accent);
 }
-.hero p {
-  max-width: 800px;
-}
-.buttons {
-  margin-top: 2rem;
-  display: flex;
-  gap: 1rem;
-}
-.buttons a {
-  display: inline-block;
+
+.tab {
   padding: 0.75rem 1.5rem;
-  background-color: var(--accent);
-  color: #fff;
-  border-radius: var(--border-radius);
-  transition: background-color 0.2s;
-}
-.buttons a.secondary {
-  background-color: transparent;
-  color: var(--accent);
-  border: 1px solid var(--accent);
-}
-.buttons a:hover {
-  background-color: #ba2c37;
-}
-
-/* Feature cards */
-.features {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.feature {
-  background-color: var(--secondary-bg);
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  flex: 1 1 280px;
-}
-.feature h3 {
-  margin-top: 0;
-  color: var(--accent);
-}
-
-/* Form layouts */
-.form-section {
-  background-color: var(--secondary-bg);
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  margin-bottom: 2rem;
-}
-.form-section h2 {
-  color: var(--accent);
-  margin-top: 0;
-}
-form .form-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-form .form-group {
-  flex: 1 1 300px;
-  display: flex;
-  flex-direction: column;
-}
-form label {
-  margin-bottom: 0.25rem;
-  font-weight: bold;
-}
-form input[type='text'],
-form input[type='email'],
-form input[type='date'],
-form input[type='number'],
-form input[type='tel'],
-form input[type='time'],
-form select,
-form textarea {
-  padding: 0.5rem;
-  border-radius: var(--border-radius);
-  border: 1px solid #374151;
-  background-color: var(--primary-bg);
-  color: var(--text-light);
-}
-form textarea {
-  resize: vertical;
-}
-form .form-actions {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-}
-form .form-actions button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: var(--border-radius);
   cursor: pointer;
-}
-form .form-actions .submit-btn {
-  background-color: var(--accent);
-  color: #fff;
-}
-form .form-actions .reset-btn {
-  background-color: transparent;
-  color: var(--accent);
-  border: 1px solid var(--accent);
+  border-bottom: 2px solid transparent;
+  color: #ccc;
 }
 
-/* Tables */
-.table-container {
-  overflow-x: auto;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-table caption {
-  text-align: left;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-table th, table td {
-  padding: 0.5rem;
-  text-align: left;
-  border: 1px solid #374151;
-}
-table th {
-  background-color: var(--secondary-bg);
-  color: var(--accent);
-}
-
-/* Dashboard tabs */
-.dashboard-tabs {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-.dashboard-tabs button {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: var(--border-radius);
-  background-color: var(--secondary-bg);
-  color: var(--text-light);
-  cursor: pointer;
-}
-.dashboard-tabs button.active {
-  background-color: var(--accent);
+.tab.active {
+  border-color: #e0b000;
   color: #fff;
 }
-.dashboard-content {
+
+.tab-content {
   display: none;
 }
-.dashboard-content.active {
+
+.tab-content.active {
   display: block;
 }
-.dashboard-iframe {
-  width: 100%;
-  height: 600px;
-  border: none;
-  border-radius: var(--border-radius);
-  background-color: var(--primary-bg);
-  margin-bottom: 1rem;
-}
 
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: var(--secondary-bg);
-  color: var(--text-light);
-}
-
-/* Responsive adjustments */
+/* === Responsive === */
 @media (max-width: 768px) {
-  nav ul {
+  .nav-links {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1rem;
   }
-  .buttons {
-    flex-direction: column;
+
+  .hero-title {
+    font-size: 2rem;
   }
-  .form-row {
-    flex-direction: column;
-  }
-  .dashboard-tabs button {
-    flex: none;
-    width: 100%;
+
+  .btn {
+    display: block;
+    margin: 0.5rem auto;
   }
 }
