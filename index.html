@@ -1,92 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Golden Hour — BVMT & Bitcoin Insights</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Navigation bar -->
+
+  <!-- Top Navigation -->
   <nav>
-    <div class="logo">Golden Hour</div>
+    <a class="logo" href="index.html">Golden Hour</a>
     <ul>
-      <li><a href="index.html" class="active">Home</a></li>
+      <li><a class="active" href="index.html">Home</a></li>
       <li><a href="forms.html">Forms</a></li>
       <li><a href="dashboards.html">Dashboards</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
 
-  <!-- Main content -->
-  <main>
-    <!-- Hero section introducing the project and Youssef Rekik -->
-    <section class="hero">
-      <h1>The Golden Hour — Private Financial Intermediary &amp; Market Insights</h1>
-      <p>
-        Smart trading starts with understanding your market’s rhythm. I’m <strong>Youssef Rekik</strong>,
-        a private financial intermediary specialising in data‑driven market analysis.
-        Through my project <strong>Golden Hour</strong>, I combine business intelligence,
-        forecasting models and financial insight to identify the most strategic trading hours — the moments when liquidity and volatility converge.
-      </p>
-      <div class="buttons">
-        <a href="dashboards.html">View Dashboards</a>
-        <a href="forms.html" class="secondary">Client Documents</a>
-      </div>
-    </section>
-
-    <!-- About the project section -->
-    <section>
-      <h2>About the Golden Hour Project</h2>
-      <p>
-        The Golden Hour project was designed to modernise the way investors analyse the Tunisian stock exchange (BVMT) and global assets like Bitcoin.
-        As a private intermediary, I bridge institutional‑grade analytics and user‑friendly visualisation.
-        Using the CRISP‑DM methodology, I process historical quotations, forecast market movements and build interactive dashboards that make professional trading tools accessible to everyone.
-      </p>
-      <div class="features">
-        <div class="feature">
-          <h3>Business Intelligence</h3>
-          <p>Data cleaning, integration and visualisation with Power BI provides clear insights into market behaviour across multiple timeframes and assets.</p>
-        </div>
-        <div class="feature">
-          <h3>Forecasting Models</h3>
-          <p>SARIMA, Holt‑Winters and Prophet models power monthly forecasts for BTC and BVMT, helping you anticipate price movements before they happen.</p>
-        </div>
-        <div class="feature">
-          <h3>Investor Guidance</h3>
-          <p>Interpretations of volatility, seasonality and “Golden Hours” help you make smarter timing decisions while understanding the risk factors involved.</p>
+  <!-- Hero (split layout) -->
+  <div class="container">
+    <section class="hero hero--wide">
+      <div class="hero__text">
+        <span class="hero__eyebrow">Private Financial Intermediary</span>
+        <h1 class="hero__title">The Golden Hour — BVMT & Bitcoin Insights</h1>
+        <p class="hero__subtitle">
+          Smart trading starts with understanding your market’s rhythm. I’m <strong>Youssef Rekik</strong>,
+          a private financial intermediary specialising in data-driven market analysis. Through
+          <strong>Golden Hour</strong>, I combine business intelligence, forecasting models and financial insight
+          to identify the most strategic trading windows — the moments when liquidity and volatility converge.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="dashboards.html">View Dashboards</a>
+          <a class="btn btn--ghost" href="forms.html">Client Documents</a>
         </div>
       </div>
-    </section>
 
-    <!-- Private intermediary section -->
-    <section>
-      <h2>Acting as a Private Intermediary</h2>
-      <p>
-        As an independent analyst and intermediary, my goal is to support investors with transparent, data‑driven tools.
-        While I do not execute trades, I provide analytical guidance, dashboard access and personalised insights through the Golden Hour platform.
-        All information is presented for educational and strategic decision‑support purposes.
-      </p>
-      <p><strong>Disclaimer:</strong> Golden Hour is not a licensed brokerage service. It provides educational market analysis and forecasting dashboards. For trading, please consult a licensed intermediary.</p>
-    </section>
-
-    <!-- Access section -->
-    <section>
-      <h2>Get Access to the Dashboards</h2>
-      <p>
-        To access the complete BTC and BVMT Stock Dashboards — including real‑time indicators, predictive analytics and our monthly forecast charts — please complete the client documents.
-        Once we review your information, we will grant you access to the dashboards.
-      </p>
-      <div class="buttons">
-        <a href="forms.html">Fill Client Documents</a>
-        <a href="dashboards.html" class="secondary">View Dashboards</a>
+      <!-- Replace youssef.jpg with your real photo file -->
+      <div class="hero__media">
+        <img src="youssef.jpg" alt="Youssef Rekik" />
       </div>
     </section>
-  </main>
+  </div>
+
+  <!-- What you get -->
+  <div class="container section">
+    <h2 class="section__title">What You Get</h2>
+    <div class="grid-3">
+      <article class="card">
+        <h3>Business Intelligence</h3>
+        <p>Clean Power BI dashboards that visualise market behaviour across multiple timeframes and assets.</p>
+      </article>
+      <article class="card">
+        <h3>Forecasting Models</h3>
+        <p>SARIMA, Holt-Winters and Prophet drive monthly forecasts for BTC & BVMT to anticipate price shifts.</p>
+      </article>
+      <article class="card">
+        <h3>Investor Guidance</h3>
+        <p>Seasonality, volatility and “Golden Hours” timing signals to support clearer entry/exit decisions.</p>
+      </article>
+    </div>
+  </div>
+
+  <!-- About the project -->
+  <div class="container section">
+    <div class="card">
+      <h2 class="section__title">About the Golden Hour Project</h2>
+      <p class="muted">
+        Golden Hour modernises the way investors analyse the Tunisian stock exchange (BVMT) and global assets like
+        Bitcoin. Using the CRISP-DM methodology, I process historical quotations, build interactive dashboards and
+        deliver short-horizon forecasts that make professional tools accessible.
+      </p>
+    </div>
+  </div>
+
+  <!-- Access -->
+  <div class="container section">
+    <div class="card">
+      <h2 class="section__title">Get Access to the Dashboards</h2>
+      <p class="muted">
+        Access complete BTC and BVMT dashboards — indicators, predictive analytics and monthly forecast charts.
+        Start by completing the client documents.
+      </p>
+      <div class="hero__cta" style="margin-top:10px;">
+        <a class="btn btn--primary" href="forms.html">Fill Client Documents</a>
+        <a class="btn btn--ghost" href="dashboards.html">Go to Dashboards</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="container section">
+    <div class="card">
+      <h2 class="section__title">Disclaimer</h2>
+      <p class="muted">
+        Golden Hour is an educational analytics platform. It is not a licensed broker and does not accept orders or
+        funds. Please consult a licensed intermediary for trading.
+      </p>
+    </div>
+  </div>
 
   <!-- Footer -->
-  <footer class="footer">
-    <p>© 2025 Golden Hour — Data‑Driven Financial Insights. All rights reserved.</p>
+  <footer>
+    © 2025 Golden Hour — Data-Driven Financial Insights.
   </footer>
+
 </body>
 </html>
