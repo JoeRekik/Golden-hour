@@ -215,3 +215,18 @@ footer{
   .grid-3{ grid-template-columns: 1fr; }
   .iframe-wrap iframe{ height: 420px; }
 }
+/* Larger iFrame for main dashboards */
+.iframe-wrap iframe{ height: 780px; }  /* adjust if you want even taller */
+
+/* 4-col responsive gallery */
+.grid-4{
+  display:grid;
+  gap:16px;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+}
+@media (max-width: 1200px){ .grid-4{ grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 900px){  .grid-4{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 560px){  .grid-4{ grid-template-columns: 1fr; } }
+
+/* Small heading inside forecast cards */
+.card h4{ font-size: 14px; font-weight: 800; margin-bottom: 8px; }
