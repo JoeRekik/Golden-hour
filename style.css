@@ -28,6 +28,104 @@ html, body {
   font-family: Inter, sans-serif;
   line-height: 1.6;
 }
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background-color: #0f1420;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.navbar {
+  background-color: #161b29;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #e0b000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.nav-links li a:hover {
+  color: #e0b000;
+}
+
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #1c2233;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: #cccccc;
+}
+
+.cta-buttons .btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  display: inline-block;
+}
+
+.primary {
+  background-color: #e0b000;
+  color: #0f1420;
+}
+
+.secondary {
+  border: 1px solid #e0b000;
+  color: #e0b000;
+}
+
+.content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  background-color: #161b29;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #0f1420;
+  font-size: 0.9rem;
+  color: #888;
+}
 
 a {
   color: var(--accent);
