@@ -1,0 +1,281 @@
+/*
+ * Global stylesheet for the Golden Hour static site.
+ *
+ * This file defines a dark theme inspired by popular trading platforms,
+ * with red accent colours and clean typography. Layouts are responsive
+ * and accessible on mobile and desktop devices. All pages load this
+ * single stylesheet to keep the site easy to maintain.
+ */
+
+:root {
+  /* Colour palette */
+  --primary-bg: #0f1420;       /* Dark background */
+  --secondary-bg: #1f2937;     /* Card/background panels */
+  --accent: #e63946;           /* Primary accent (red) */
+  --text-light: #e5e5e5;       /* Light text */
+  --text-dark: #333333;        /* Dark text, seldom used */
+  --card-bg: #111827;          /* Panels and hero backgrounds */
+  --border-radius: 8px;        /* Global corner rounding */
+  --max-width: 1200px;         /* Constrain content width */
+}
+
+/* Base element styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--primary-bg);
+  color: var(--text-light);
+  font-family: Inter, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Navigation bar */
+nav {
+  background-color: var(--secondary-bg);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+nav ul li a {
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+/* Main content container */
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+section {
+  margin-bottom: 2rem;
+}
+
+/* Hero section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1rem;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+.hero p {
+  max-width: 800px;
+}
+.buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+.buttons a {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent);
+  color: #fff;
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s;
+}
+.buttons a.secondary {
+  background-color: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+.buttons a:hover {
+  background-color: #ba2c37;
+}
+
+/* Feature cards */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.feature {
+  background-color: var(--secondary-bg);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  flex: 1 1 280px;
+}
+.feature h3 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+/* Form layouts */
+.form-section {
+  background-color: var(--secondary-bg);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+}
+.form-section h2 {
+  color: var(--accent);
+  margin-top: 0;
+}
+form .form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+form .form-group {
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+}
+form label {
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+form input[type='text'],
+form input[type='email'],
+form input[type='date'],
+form input[type='number'],
+form input[type='tel'],
+form input[type='time'],
+form select,
+form textarea {
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #374151;
+  background-color: var(--primary-bg);
+  color: var(--text-light);
+}
+form textarea {
+  resize: vertical;
+}
+form .form-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+form .form-actions button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+form .form-actions .submit-btn {
+  background-color: var(--accent);
+  color: #fff;
+}
+form .form-actions .reset-btn {
+  background-color: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+/* Tables */
+.table-container {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table caption {
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+table th, table td {
+  padding: 0.5rem;
+  text-align: left;
+  border: 1px solid #374151;
+}
+table th {
+  background-color: var(--secondary-bg);
+  color: var(--accent);
+}
+
+/* Dashboard tabs */
+.dashboard-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.dashboard-tabs button {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--secondary-bg);
+  color: var(--text-light);
+  cursor: pointer;
+}
+.dashboard-tabs button.active {
+  background-color: var(--accent);
+  color: #fff;
+}
+.dashboard-content {
+  display: none;
+}
+.dashboard-content.active {
+  display: block;
+}
+.dashboard-iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-bg);
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--secondary-bg);
+  color: var(--text-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .buttons {
+    flex-direction: column;
+  }
+  .form-row {
+    flex-direction: column;
+  }
+  .dashboard-tabs button {
+    flex: none;
+    width: 100%;
+  }
+}

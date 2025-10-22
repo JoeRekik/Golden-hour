@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Hour — Client Documents</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Golden Hour</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="forms.html" class="active">Forms</a></li>
+      <li><a href="dashboards.html">Dashboards</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main content -->
+  <main>
+    <h1>Client Documents (Golden Hour)</h1>
+
+    <!-- Account Opening Form -->
+    <section class="form-section">
+      <h2>Account Opening Form (Securities Account)</h2>
+      <form>
+        <!-- Personal details -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required>
+          </div>
+          <div class="form-group">
+            <label for="nationality">Nationality</label>
+            <input type="text" id="nationality" name="nationality" required>
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+          </div>
+          <div class="form-group">
+            <label for="profession">Profession</label>
+            <input type="text" id="profession" name="profession" required>
+          </div>
+        </div>
+
+        <!-- ID details -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="idtype">ID Type</label>
+            <select id="idtype" name="idtype" required>
+              <option value="">Select…</option>
+              <option value="national">National ID</option>
+              <option value="passport">Passport</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="idnumber">ID Number</label>
+            <input type="text" id="idnumber" name="idnumber" required>
+          </div>
+          <div class="form-group">
+            <label for="idissuedate">ID Issue Date</label>
+            <input type="date" id="idissuedate" name="idissuedate">
+          </div>
+          <div class="form-group">
+            <label for="idissueplace">ID Issue Place</label>
+            <input type="text" id="idissueplace" name="idissueplace">
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="street">Street Address</label>
+            <input type="text" id="street" name="street" required>
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" required>
+          </div>
+          <div class="form-group">
+            <label for="postal">Postal Code</label>
+            <input type="text" id="postal" name="postal" required>
+          </div>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <input type="text" id="country" name="country" required>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+        </div>
+
+        <!-- Professional address (optional) -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="company">Company (optional)</label>
+            <input type="text" id="company" name="company">
+          </div>
+          <div class="form-group">
+            <label for="companyaddress">Company Address</label>
+            <input type="text" id="companyaddress" name="companyaddress">
+          </div>
+          <div class="form-group">
+            <label for="companyphone">Company Phone</label>
+            <input type="tel" id="companyphone" name="companyphone">
+          </div>
+          <div class="form-group">
+            <label for="companyemail">Company Email</label>
+            <input type="email" id="companyemail" name="companyemail">
+          </div>
+        </div>
+
+        <!-- Acting as -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Acting as</label>
+            <div>
+              <label><input type="radio" name="acting" value="self" checked> On my own behalf</label>
+              <label><input type="radio" name="acting" value="company"> On behalf of a legal person (company)</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account type -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Account Type Requested</label>
+            <div>
+              <label><input type="checkbox" name="accounttype" value="standard"> Standard</label>
+              <label><input type="checkbox" name="accounttype" value="custody"> Custody‑Only</label>
+              <label><input type="checkbox" name="accounttype" value="discretionary"> Discretionary</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Risk profile -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Risk Profile</label>
+            <div>
+              <label><input type="radio" name="risk" value="prudent" checked> Prudent</label>
+              <label><input type="radio" name="risk" value="moderate"> Moderate</label>
+              <label><input type="radio" name="risk" value="high"> High</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Investment objective -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Investment Objective</label>
+            <div>
+              <label><input type="checkbox" name="objective" value="wealth"> Build Wealth</label>
+              <label><input type="checkbox" name="objective" value="diversify"> Diversify Savings</label>
+              <label><input type="checkbox" name="objective" value="fiscal"> Fiscal Advantage</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Horizon -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Investment Horizon</label>
+            <div>
+              <label><input type="radio" name="horizon" value="short" checked> Short</label>
+              <label><input type="radio" name="horizon" value="medium"> Medium</label>
+              <label><input type="radio" name="horizon" value="long"> Long</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Market knowledge -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Market Knowledge</label>
+            <div>
+              <label><input type="radio" name="knowledge" value="good" checked> Good</label>
+              <label><input type="radio" name="knowledge" value="average"> Average</label>
+              <label><input type="radio" name="knowledge" value="none"> None</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Referral source -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>How did you hear about us?</label>
+            <div>
+              <label><input type="checkbox" name="hear" value="referral"> Referral</label>
+              <label><input type="checkbox" name="hear" value="online"> Online</label>
+              <label><input type="checkbox" name="hear" value="advertising"> Advertising</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Consent -->
+        <div class="form-row">
+          <div class="form-group">
+            <label><input type="checkbox" name="consent" required> I agree to the Terms &amp; Privacy Policy</label>
+          </div>
+        </div>
+
+        <!-- Form actions -->
+        <div class="form-row form-actions">
+          <button type="submit" class="submit-btn">Submit</button>
+          <button type="reset" class="reset-btn">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Order Ticket Form -->
+    <section class="form-section">
+      <h2>Order Ticket (Buy/Sell)</h2>
+      <form>
+        <!-- Client details -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="clientcode">Client Code</label>
+            <input type="text" id="clientcode" name="clientcode" required>
+          </div>
+          <div class="form-group">
+            <label for="clientname">Name</label>
+            <input type="text" id="clientname" name="clientname" required>
+          </div>
+          <div class="form-group">
+            <label for="clientaddress">Address</label>
+            <input type="text" id="clientaddress" name="clientaddress" required>
+          </div>
+        </div>
+
+        <!-- Acting on behalf -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Acting on behalf of</label>
+            <div>
+              <label><input type="radio" name="actingorder" value="self" checked> Self</label>
+              <label><input type="radio" name="actingorder" value="other"> Other</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="actingother">If other, specify</label>
+            <input type="text" id="actingother" name="actingother">
+          </div>
+        </div>
+
+        <!-- Order details -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Order Type</label>
+            <div>
+              <label><input type="radio" name="ordertype" value="buy" checked> Buy</label>
+              <label><input type="radio" name="ordertype" value="sell"> Sell</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="instrument">Instrument (Issuer/Ticker)</label>
+            <input type="text" id="instrument" name="instrument" required>
+          </div>
+          <div class="form-group">
+            <label for="quantity">Number of Shares</label>
+            <input type="number" id="quantity" name="quantity" min="1" required>
+          </div>
+        </div>
+
+        <!-- Price type -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Price Type</label>
+            <div>
+              <label><input type="radio" name="pricetype" value="market" checked> Market (ATP)</label>
+              <label><input type="radio" name="pricetype" value="opening"> At Opening</label>
+              <label><input type="radio" name="pricetype" value="limit"> Limit</label>
+              <label><input type="radio" name="pricetype" value="bestopposite"> Best Opposite</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="limitprice">Limit Price (if limit)</label>
+            <input type="number" step="0.01" id="limitprice" name="limitprice">
+          </div>
+        </div>
+
+        <!-- Stops -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Stops (optional)</label>
+            <div>
+              <label>Stop Loss&nbsp;<input type="number" step="0.01" name="stoploss"></label>
+              <label>Stop Limit&nbsp;<input type="number" step="0.01" name="stoplimit"></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Validity -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Validity</label>
+            <div>
+              <label><input type="radio" name="validity" value="day" checked> Day</label>
+              <label><input type="radio" name="validity" value="date"> Good‑till‑Date</label>
+              <label><input type="radio" name="validity" value="cancel"> Good‑till‑Cancel (365 days)</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="validdate">Validity Date</label>
+            <input type="date" id="validdate" name="validdate">
+          </div>
+        </div>
+
+        <!-- Settlement -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>Settlement / Proceeds</label>
+            <div>
+              <label><input type="radio" name="settlement" value="cash" checked> Cash</label>
+              <label><input type="radio" name="settlement" value="bank"> Bank Transfer</label>
+              <label><input type="radio" name="settlement" value="other"> Other</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="bankiban">Bank &amp; IBAN (if bank transfer)</label>
+            <input type="text" id="bankiban" name="bankiban">
+          </div>
+        </div>
+
+        <!-- Other instructions -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="otherinstructions">Other Instructions</label>
+            <textarea id="otherinstructions" name="otherinstructions" rows="3"></textarea>
+          </div>
+        </div>
+
+        <!-- Date & time -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="orderdate">Order Date</label>
+            <input type="date" id="orderdate" name="orderdate" required>
+          </div>
+          <div class="form-group">
+            <label for="ordertime">Order Time</label>
+            <input type="time" id="ordertime" name="ordertime" required>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="form-row form-actions">
+          <button type="submit" class="submit-btn">Submit</button>
+          <button type="reset" class="reset-btn">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Fees & Commissions -->
+    <section class="form-section">
+      <h2>Fees &amp; Commissions</h2>
+      <div class="table-container">
+        <table>
+          <caption>Summary Table</caption>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Amount / Rate</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Account Opening</td>
+              <td>100.00 TND</td>
+              <td>One‑time</td>
+            </tr>
+            <tr>
+              <td>Brokerage</td>
+              <td>0.5%</td>
+              <td>Minimum may apply</td>
+            </tr>
+            <tr>
+              <td>Account Maintenance</td>
+              <td>---</td>
+              <td>Monthly/Annual (if applicable)</td>
+            </tr>
+            <tr>
+              <td>Dividend Handling</td>
+              <td>3% of coupon</td>
+              <td>If applicable</td>
+            </tr>
+            <tr>
+              <td>Transfer Out</td>
+              <td>30.00 TND</td>
+              <td>Per transfer</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        All amounts are examples. Replace these values with your actual fees and commissions.
+        Golden Hour does not accept orders or funds; for trading, contact a licensed intermediary.
+      </p>
+    </section>
+
+    <!-- Additional forms placeholder -->
+    <section class="form-section">
+      <h2>Additional Forms</h2>
+      <p>Placeholders for any additional client documents or declarations that you may need. You can add more forms here as required.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Golden Hour — Data‑Driven Financial Insights. All rights reserved.</p>
+  </footer>
+</body>
+</html>
