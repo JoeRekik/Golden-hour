@@ -3,106 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Golden Hour — Dashboards</title>
+  <title>Dashboards — Golden Hour</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="js/script.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- Navigation -->
+
+  <!-- Top Navigation -->
   <nav>
-    <div class="logo">Golden Hour</div>
+    <a class="logo" href="index.html">Golden Hour</a>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="forms.html">Forms</a></li>
-      <li><a href="dashboards.html" class="active">Dashboards</a></li>
+      <li><a class="active" href="dashboards.html">Dashboards</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
   </nav>
 
-  <!-- Main content -->
-  <main>
+  <!-- Main Container -->
+  <div class="container">
     <h1>Dashboards</h1>
-    <p>Use the tabs below to switch between the Bitcoin and BVMT Stock dashboards. You may be prompted to sign in to view the embedded Power BI reports.</p>
-    <!-- Tab controls -->
-    <div class="dashboard-tabs">
-      <button type="button" class="active">BTC</button>
-      <button type="button">Stocks (BVMT)</button>
-    </div>
-    
-    <!-- BTC Dashboard content -->
-    <div class="dashboard-content active">
-      <h2>Bitcoin Dashboard</h2>
-      <p>Below is the interactive Power BI dashboard for Bitcoin. Sign in with your Power BI account if prompted.</p>
-      <iframe class="dashboard-iframe" src="https://app.powerbi.com/reportEmbed?reportId=f8dfb7b3-1433-4bcb-8647-3bcbce4116d3&amp;autoAuth=true&amp;ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730" title="BTC Dashboard"></iframe>
-      <h3>BTC Forecasts</h3>
-      <p>Placeholder for SARIMA, Holt–Winters, and Prophet forecast charts. Replace these images with your actual forecasts.</p>
-      <div class="features">
-        <div class="feature">
-          <h4>Forecast Chart 1</h4>
-          <img src="img/btc-forecast1.png" alt="BTC Forecast Chart 1">
-        </div>
-        <div class="feature">
-          <h4>Forecast Chart 2</h4>
-          <img src="img/btc-forecast2.png" alt="BTC Forecast Chart 2">
-        </div>
-        <div class="feature">
-          <h4>Forecast Chart 3</h4>
-          <img src="img/btc-forecast3.png" alt="BTC Forecast Chart 3">
-        </div>
-      </div>
-      <table>
-        <caption>BTC Forecast Metrics</caption>
-        <thead>
-          <tr><th>Metric</th><th>Value</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>MAPE</td><td>—</td></tr>
-          <tr><td>RMSE</td><td>—</td></tr>
-          <tr><td>Directional Accuracy</td><td>—</td></tr>
-        </tbody>
-      </table>
-      <p></p>
+    <p class="muted">Use the tabs below to switch between the Bitcoin and BVMT Stock dashboards. You may be prompted to sign in to view the embedded Power BI reports.</p>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" data-tab="btc">BTC</button>
+      <button class="tab" data-tab="bvmt">Stocks&nbsp;(BVMT)</button>
     </div>
 
-    <!-- Stocks Dashboard content -->
-    <div class="dashboard-content">
-      <h2>Stocks Dashboard (BVMT)</h2>
-      <p>Placeholder for the BVMT Power BI dashboard. Replace the embed link below with your BVMT report ID when available.</p>
-      <iframe class="dashboard-iframe" src="#" title="Stocks Dashboard"></iframe>
-      <h3>Stocks Forecasts</h3>
-      <p>Placeholder for SARIMA, Holt–Winters, and Prophet forecast charts for stocks. Replace these images with your actual forecasts.</p>
-      <div class="features">
-        <div class="feature">
-          <h4>Forecast Chart 1</h4>
-          <img src="img/stocks-forecast1.png" alt="Stocks Forecast Chart 1">
-        </div>
-        <div class="feature">
-          <h4>Forecast Chart 2</h4>
-          <img src="img/stocks-forecast2.png" alt="Stocks Forecast Chart 2">
-        </div>
-        <div class="feature">
-          <h4>Forecast Chart 3</h4>
-          <img src="img/stocks-forecast3.png" alt="Stocks Forecast Chart 3">
-        </div>
+    <!-- Bitcoin Dashboard -->
+    <section id="btc" class="tab-pane active">
+      <div class="iframe-wrap">
+        <iframe src="https://app.powerbi.com/reportEmbed?reportId=f8dfb7b3-1433-4bcb-8647-3bcbce4116d3&amp;autoAuth=true&amp;ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730" title="BTC Dashboard"></iframe>
       </div>
-      <table>
-        <caption>Stocks Forecast Metrics</caption>
-        <thead>
-          <tr><th>Metric</th><th>Value</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>MAPE</td><td>—</td></tr>
-          <tr><td>RMSE</td><td>—</td></tr>
-          <tr><td>Directional Accuracy</td><td>—</td></tr>
-        </tbody>
-      </table>
-      <p></p>
-    </div>
-  </main>
+
+      <div class="spacer"></div>
+
+      <div class="card">
+        <h3>BTC Forecasts</h3>
+        <p class="muted">Replace these placeholders with your SARIMA, Holt–Winters and Prophet charts.</p>
+        <div class="grid-3">
+          <article class="card">
+            <h4>SARIMA Forecast</h4>
+            <img src="btc-forecast1.png" alt="BTC Forecast 1">
+          </article>
+          <article class="card">
+            <h4>Holt–Winters Forecast</h4>
+            <img src="btc-forecast2.png" alt="BTC Forecast 2">
+          </article>
+          <article class="card">
+            <h4>Prophet Forecast</h4>
+            <img src="btc-forecast3.png" alt="BTC Forecast 3">
+          </article>
+        </div>
+        <table class="table">
+          <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>MAPE</td><td>—</td></tr>
+            <tr><td>RMSE</td><td>—</td></tr>
+            <tr><td>Directional Accuracy</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Stocks Dashboard -->
+    <section id="bvmt" class="tab-pane">
+      <div class="iframe-wrap">
+        <!-- Replace # with your secure embed URL for BVMT when available -->
+        <iframe src="#" title="BVMT Dashboard"></iframe>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="card">
+        <h3>Stocks Forecasts</h3>
+        <p class="muted">Replace these placeholders with your forecasts for BVMT stocks.</p>
+        <div class="grid-3">
+          <article class="card">
+            <h4>SARIMA Forecast</h4>
+            <img src="stocks-forecast1.png" alt="Stocks Forecast 1">
+          </article>
+          <article class="card">
+            <h4>Holt–Winters Forecast</h4>
+            <img src="stocks-forecast2.png" alt="Stocks Forecast 2">
+          </article>
+          <article class="card">
+            <h4>Prophet Forecast</h4>
+            <img src="stocks-forecast3.png" alt="Stocks Forecast 3">
+          </article>
+        </div>
+        <table class="table">
+          <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>MAPE</td><td>—</td></tr>
+            <tr><td>RMSE</td><td>—</td></tr>
+            <tr><td>Directional Accuracy</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
 
   <!-- Footer -->
-  <footer class="footer">
-    <p>© 2025 Golden Hour — Data‑Driven Financial Insights. All rights reserved.</p>
+  <footer>
+    © 2025 Golden Hour — Data‑Driven Financial Insights.
   </footer>
+
 </body>
 </html>
