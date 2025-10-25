@@ -32,6 +32,88 @@ img { max-width: 100%; display: block; }
   border-radius: 10px;
   background: #0f1420;     /* subtle backdrop behind transparent PNGs */
 }
+/* ===== Page header ===== */
+.page-header{margin-bottom:1.5rem}
+.eyebrow{
+  display:inline-block;
+  font-size:.75rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#8693A6;
+  background:#131826;
+  border:1px solid #222a3b;
+  padding:.25rem .5rem;
+  border-radius:999px;
+}
+.page-header h1{margin:.6rem 0 0.25rem}
+.page-header .muted{color:#aab3c2}
+
+/* ===== Cards match home ===== */
+.card{background:#161b29;border-radius:14px;padding:1.5rem;border:1px solid #222a3b}
+.card + .card{margin-top:1rem}
+.card-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.badge{
+  font-size:.7rem;color:#e0b000;background:#1c2233;border:1px solid #2a3347;
+  padding:.15rem .5rem;border-radius:8px
+}
+
+/* ===== Form grid ===== */
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:1rem 1.25rem;
+}
+.form-grid .span-2{grid-column:1 / -1}
+
+.fieldset{
+  border:1px solid #222a3b;
+  border-radius:10px;
+  padding:1rem;
+  background:#121828;
+}
+.fieldset + .fieldset{margin-top:1rem}
+.fieldset legend{
+  padding:0 .35rem;
+  font-weight:600;
+  color:#e0b000;
+}
+
+/* labels/inputs */
+.form-grid label{display:flex;flex-direction:column;gap:.4rem}
+.form-grid label > span{font-size:.9rem;color:#cfd6e4}
+.req{color:#ff6161}
+
+input, select, textarea{
+  width:100%;
+  padding:.7rem .8rem;
+  border:1px solid #2a3347;
+  border-radius:8px;
+  background:#1c2233;
+  color:#fff;
+}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#e0b000}
+
+/* inline options */
+.inline{display:flex;gap:.75rem;flex-wrap:wrap}
+.chip{
+  display:inline-flex;align-items:center;gap:.45rem;
+  padding:.35rem .6rem;border:1px solid #2a3347;border-radius:999px;
+  background:#131a2a;color:#d6deea;cursor:pointer;
+}
+.chip input{accent-color:#e0b000}
+
+/* actions */
+.form-actions{display:flex;gap:.75rem;justify-content:flex-end;margin-top:.25rem}
+.btn{padding:.7rem 1.1rem;border-radius:8px;text-decoration:none;font-weight:600}
+.btn.primary{background:#e0b000;color:#0f1420;border:none}
+.btn.ghost{background:transparent;border:1px solid #2a3347;color:#cfd6e4}
+.btn.primary:hover{opacity:.92}
+.btn.ghost:hover{border-color:#e0b000;color:#fff}
+
+/* responsive */
+@media (max-width: 900px){
+  .form-grid{grid-template-columns:1fr}
+}
 
 /* Give cards a bit more breathing room */
 .grid-4 .card{ padding: 20px 22px; }
