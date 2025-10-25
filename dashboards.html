@@ -25,22 +25,23 @@
     <p class="muted">Choose a tab. If prompted, sign in to view your secure Power BI report.</p>
 
     <!-- Tabs -->
-    <div class="tabs">
-      <button class="tab active" data-tab="btc">BTC</button>
-      <button class="tab" data-tab="bvmt">Stocks (BVMT)</button>
+    <div class="tabs" role="tablist" aria-label="Dashboards">
+      <button class="tab active" data-tab="btc" role="tab" aria-selected="true" aria-controls="btc">BTC</button>
+      <button class="tab" data-tab="bvmt" role="tab" aria-selected="false" aria-controls="bvmt">Stocks (BVMT)</button>
     </div>
 
     <!-- ===== BTC TAB ===== -->
-    <section id="btc" class="tab-pane active">
-
-      <!-- Prominent Power BI block -->
+    <section id="btc" class="tab-pane active" role="tabpanel" aria-labelledby="btc">
+      <!-- Power BI (BTC) -->
       <div class="card" style="padding:0; overflow:hidden">
         <div class="iframe-wrap">
-          <!-- Your secure embed: users will get MS sign-in screen if needed -->
           <iframe
             title="BTC Dashboard"
             src="https://app.powerbi.com/reportEmbed?reportId=f8dfb7b3-1433-4bcb-8647-3bcbce4116d3&autoAuth=true&ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730"
+            frameborder="0"
             allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
       </div>
@@ -75,11 +76,11 @@
     </section>
 
     <!-- ===== BVMT TAB ===== -->
-    <section id="bvmt" class="tab-pane">
+    <section id="bvmt" class="tab-pane" role="tabpanel" aria-labelledby="bvmt">
+      <!-- SAFE PLACEHOLDER (no self-nesting) -->
       <div class="card" style="padding:0; overflow:hidden">
-        <div class="iframe-wrap">
-          <!-- Replace # with your BVMT secure embed URL when ready -->
-          <iframe title="BVMT Dashboard" src="#"></iframe>
+        <div class="iframe-wrap" style="display:grid;place-items:center;height:360px;">
+          <p class="muted">Add your BVMT Power BI embed link here.</p>
         </div>
       </div>
 
