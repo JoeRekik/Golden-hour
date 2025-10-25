@@ -21,6 +21,50 @@ img { max-width: 100%; display: block; }
   --white:#FFFFFF;
   --shadow: 0 10px 30px rgba(0,0,0,.35);
 }
+/* ===== Improved spacing for form readability ===== */
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem; /* more space between label text and input */
+  margin-bottom: 0.8rem; /* more space between inputs */
+}
+
+.fieldset {
+  border: 1px solid #222a3b;
+  border-radius: 10px;
+  padding: 1.5rem; /* more space inside the boxes */
+  background: #121828;
+  margin-bottom: 1.2rem; /* more gap between fieldsets */
+}
+
+.form-grid {
+  gap: 1.5rem 2rem; /* horizontal and vertical spacing between columns */
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 0.9rem 1rem; /* slightly taller inputs */
+  border: 1px solid #2a3347;
+  border-radius: 8px;
+  background: #1c2233;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.form-actions {
+  margin-top: 1.5rem; /* more space above buttons */
+  padding-top: 0.5rem;
+  border-top: 1px solid #1e2637;
+}
+
+.page-header {
+  margin-bottom: 2rem; /* push the header away from the form */
+}
+
+.card {
+  padding: 2rem; /* more air around form elements inside card */
+}
+
 /* === Bigger forecast visuals === */
 
 /* Make each image fill its card and give it a taller viewport */
