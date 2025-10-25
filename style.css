@@ -21,6 +21,30 @@ img { max-width: 100%; display: block; }
   --white:#FFFFFF;
   --shadow: 0 10px 30px rgba(0,0,0,.35);
 }
+/* === Bigger forecast visuals === */
+
+/* Make each image fill its card and give it a taller viewport */
+.grid-4 .card img{
+  width: 100%;
+  height: 420px;           /* ↑ increase/decrease as you like (360–520px works well) */
+  object-fit: contain;     /* keep chart proportions, no cropping */
+  display: block;
+  border-radius: 10px;
+  background: #0f1420;     /* subtle backdrop behind transparent PNGs */
+}
+
+/* Give cards a bit more breathing room */
+.grid-4 .card{ padding: 20px 22px; }
+
+/* Fewer columns on wide screens = larger cards */
+.grid-4{
+  grid-template-columns: repeat(3, minmax(0,1fr));  /* was 4 */
+  gap: 22px;
+}
+
+/* Responsive steps */
+@media (max-width: 1200px){ .grid-4{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 680px){  .grid-4{ grid-template-columns: 1fr; } .grid-4 .card img{ height: 340px; } }
 
 /* ---------- Base ---------- */
 body{
