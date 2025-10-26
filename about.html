@@ -1,54 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Golden Hour — About &amp; Contact</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Golden Hour — About & Contact</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">Golden Hour</div>
-    <ul>
+  <!-- NAV -->
+  <nav class="navbar">
+    <a class="logo" href="index.html">Golden Hour</a>
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="forms.html">Forms</a></li>
       <li><a href="dashboards.html">Dashboards</a></li>
-      <li><a href="about.html" class="active">About</a></li>
+      <li><a class="active" href="about.html">About</a></li>
     </ul>
   </nav>
 
-  <!-- Main content -->
-  <main>
-    <h1>About &amp; Contact</h1>
-    <section>
-      <h2>About Youssef Rekik</h2>
-      <p>
-        <!-- Placeholder for a longer biography. The user can replace this text with their own introduction. -->
-        I am Youssef Rekik, a Business Computing student focused on financial analytics. This project applies the
-        CRISP‑DM methodology to BVMT and Bitcoin data to reveal seasonal patterns, liquidity/volatility spikes and short‑horizon forecasts.
-        The goal is simple: clearer timing, less noise.
+  <main class="container">
+    <!-- Page header -->
+    <header class="page-header">
+      <div class="eyebrow">About & Contact</div>
+      <h1>About Golden Hour</h1>
+      <p class="muted">A focused project for clean market analytics, forecasting, and investor-friendly visualization.</p>
+    </header>
+
+    <!-- Bio / Photo -->
+    <section class="card">
+      <div class="about-grid">
+        <div class="about-photo">
+          <!-- Replace youssef.jpg with your own image in / root or /img -->
+          <img src="youssef.jpg" alt="Youssef Rekik" />
+        </div>
+        <div class="about-text">
+          <h2>About Youssef Rekik</h2>
+          <!-- Leave this paragraph empty or replace with your final intro -->
+          <p><em>(Intro placeholder)</em> — write 3–5 concise lines here. Example: I’m Youssef Rekik, a Business Computing student focused on financial analytics. Golden Hour applies the CRISP-DM methodology to BVMT & Bitcoin data to reveal seasonality, liquidity/volatility spikes, and short-horizon forecasts.</p>
+
+          <div class="about-highlights">
+            <div class="pill">CRISP-DM</div>
+            <div class="pill">Power BI</div>
+            <div class="pill">Forecasting</div>
+            <div class="pill">BTC & BVMT</div>
+          </div>
+
+          <div class="about-cta">
+            <a href="dashboards.html" class="btn primary">View Dashboards</a>
+            <a href="forms.html" class="btn ghost">Client Documents</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <section class="card">
+      <h2>Disclaimer & Risk Warning</h2>
+      <p class="muted">
+        Golden Hour provides educational market analytics and does not execute trades.
+        Past performance is not indicative of future results. Investing in stocks,
+        cryptocurrencies and other financial instruments involves risk; you may lose
+        some or all of your investment.
       </p>
     </section>
-    <section>
-      <h2>Disclaimer &amp; Risk Warning</h2>
-      <p>
-        Golden Hour provides educational market analytics and does not execute trades. Past performance is not indicative of future results.
-        Investing in stocks, cryptocurrencies and other financial instruments involves risk; you may lose some or all of your investment.
-      </p>
-    </section>
-    <section>
+
+    <!-- Contact -->
+    <section class="card">
       <h2>Contact</h2>
-      <p>If you have any questions or require more information, please send an email to
-        <a href="mailto:your-email@example.com">your-email@example.com</a>.
-        <!-- Replace the email address with your actual contact. -->
-      </p>
+      <div class="contact-grid">
+        <div>
+          <p class="muted">Questions or partnership ideas? Reach out anytime.</p>
+          <!-- Replace with your real address/phone if desired -->
+          <ul class="contact-list">
+            <li><span class="tag">Email</span> <a href="mailto:your-email@example.com">your-email@example.com</a></li>
+            <li><span class="tag">Location</span> Tunis, Tunisia</li>
+          </ul>
+        </div>
+        <div class="contact-actions">
+          <a href="mailto:your-email@example.com" class="btn primary">Email Me</a>
+          <a href="forms.html" class="btn ghost">Start Onboarding</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
-    <p>© 2025 Golden Hour — Data‑Driven Financial Insights. All rights reserved.</p>
+    © 2025 Golden Hour — Data-Driven Financial Insights.
   </footer>
 </body>
 </html>
