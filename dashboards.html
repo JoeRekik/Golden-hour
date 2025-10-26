@@ -3,15 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboards — Golden Hour</title>
+  <title>Golden Hour — Dashboards</title>
   <link rel="stylesheet" href="style.css"/>
-  <script defer src="script.js"></script>
+  <style>
+    /* Page-specific tweaks for visibility */
+    .page-header { margin: 24px auto 12px; max-width: 1200px; padding: 0 16px; }
+    .subtext { color:#AAB2C0; font-size:.95rem; }
+    .tabs-wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+    .dashboard-tabs { display: flex; gap: 10px; margin: 16px 0 12px; }
+    .dashboard-tabs button{
+      padding: 10px 16px; border:1px solid #2a2f3f; border-radius:10px;
+      background:#151A24; color:#dfe6ef; cursor:pointer; font-weight:600;
+    }
+    .dashboard-tabs button.active{ background:#E31B4B; color:#fff; border-color:#E31B4B; }
+
+    .card-xl{
+      background:#121722; border:1px solid #23293a; border-radius:16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.35); padding:16px; margin-bottom:18px;
+    }
+
+    /* Responsive 16:9 frame wrapper (max visibility) */
+    .embed-16by9{
+      position:relative; width:100%; max-width:1200px; margin:0 auto; 
+      padding-top:56.25%;
+      border-radius:12px; overflow:hidden; background:#0f1420;
+    }
+    .embed-16by9 iframe{
+      position:absolute; inset:0; width:100%; height:100%;
+      border:0; background:#0f1420;
+    }
+
+    /* Forecast gallery */
+    .gallery{ max-width:1200px; margin:18px auto 28px; padding:0 16px; }
+    .gallery h3{ margin:0 0 12px; }
+    .grid{
+      display:grid; gap:12px;
+      grid-template-columns: repeat( auto-fit, minmax(220px, 1fr) );
+    }
+    .grid .imgcard{
+      background:#151A24; border:1px solid #23293a; border-radius:12px;
+      overflow:hidden; display:flex; align-items:center; justify-content:center;
+      min-height:160px;
+    }
+    .grid .imgcard img{ width:100%; height:auto; display:block; }
+
+    /* Tab content visibility */
+    .dashboard-content{ display:none; }
+    .dashboard-content.active{ display:block; }
+  </style>
 </head>
 <body>
-
-  <!-- Top Navigation -->
+  <!-- Top Nav -->
   <nav>
-    <a class="logo" href="index.html">Golden Hour</a>
+    <div class="logo">Golden Hour</div>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="forms.html">Forms</a></li>
@@ -20,82 +65,89 @@
     </ul>
   </nav>
 
-  <div class="container">
+  <header class="page-header">
     <h1>Dashboards</h1>
-    <p class="muted">Choose a tab. If prompted, sign in to view your secure Power BI report.</p>
+    <p class="subtext">Choose a tab. If your tenant requires authentication, sign in once. After that, the report will load directly in the frame.</p>
+  </header>
 
+  <section class="tabs-wrap">
     <!-- Tabs -->
-    <div class="tabs" role="tablist" aria-label="Dashboards">
-      <button class="tab active" data-tab="btc" role="tab" aria-selected="true" aria-controls="btc">BTC</button>
-      <button class="tab" data-tab="bvmt" role="tab" aria-selected="false" aria-controls="bvmt">Stocks (BVMT)</button>
+    <div class="dashboard-tabs">
+      <button class="active">BTC</button>
+      <button>Stocks (BVMT)</button>
     </div>
 
-    <!-- ===== BTC TAB ===== -->
-    <section id="btc" class="tab-pane active" role="tabpanel" aria-labelledby="btc">
-      <!-- Power BI (BTC) -->
-      <div class="card" style="padding:0; overflow:hidden">
-        <div class="iframe-wrap">
+    <!-- BTC TAB -->
+    <div class="dashboard-content active">
+      <div class="card-xl">
+        <div class="embed-16by9">
           <iframe
-  title="Golden Hour Dashboard"
-  src="https://app.powerbi.com/view?r=eyJrIjoiYOUR_PUBLIC_TOKEN"
-  style="width:100%; height:80vh; border:none; border-radius:10px;"
-  allowfullscreen>
+            title="BTC Dashboard"
+            src="https://app.powerbi.com/reportEmbed?reportId=f8dfb7b3-1433-4bcb-8647-3bcbce4116d3&autoAuth=true&ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730"
+            allowfullscreen
+            loading="eager"
+            referrerpolicy="no-referrer-when-downgrade">
           </iframe>
-
-
         </div>
       </div>
 
-      <!-- BTC Forecast Gallery (8 visuals) -->
-      <div class="section">
-        <h2 class="section__title">BTC Forecasts</h2>
-        <p class="muted" style="margin-bottom:10px">
-          Replace the placeholders below with your charts. Upload images with the exact filenames shown.
-        </p>
-
-        <div class="grid-4">
-          <article class="card"><h4>SARIMA Forecast</h4><img src="stocks-forecast1.png" alt="BTC Forecast 1"></article>
-          <article class="card"><h4>Holt–Winters</h4><img src="stocks-forecast2.png" alt="BTC Forecast 2"></article>
-          <article class="card"><h4>Prophet</h4><img src="stocks-forecast3.png" alt="BTC Forecast 3"></article>
-          <article class="card"><h4>Seasonality</h4><img src="stocks-forecast4.png" alt="BTC Forecast 4"></article>
-          <article class="card"><h4>Residuals</h4><img src="stocks-forecast5.png" alt="BTC Forecast 5"></article>
-          <article class="card"><h4>Rolling Forecast</h4><img src="stocks-forecast6.png" alt="BTC Forecast 6"></article>
-          <article class="card"><h4>Confidence Bands</h4><img src="stocks-forecast7.png" alt="BTC Forecast 7"></article>
-          <article class="card"><h4>Error Distribution</h4><img src="stocks-forecast8.png" alt="BTC Forecast 8"></article>
+      <div class="gallery">
+        <h3>BTC Forecasts (2025)</h3>
+        <div class="grid">
+          <div class="imgcard"><img src="btc-forecast1.png" alt="BTC Forecast 1"/></div>
+          <div class="imgcard"><img src="btc-forecast2.png" alt="BTC Forecast 2"/></div>
+          <div class="imgcard"><img src="btc-forecast3.png" alt="BTC Forecast 3"/></div>
+          <div class="imgcard"><img src="stocks-forecast1.png" alt="Placeholder"/></div>
+          <div class="imgcard"><img src="stocks-forecast2.png" alt="Placeholder"/></div>
         </div>
-
-        <table class="table" style="margin-top:14px">
-          <thead><tr><th>Metric</th><th>Value</th></tr></thead>
-          <tbody>
-            <tr><td>MAPE</td><td>—</td></tr>
-            <tr><td>RMSE</td><td>—</td></tr>
-            <tr><td>Directional Accuracy</td><td>—</td></tr>
-          </tbody>
-        </table>
       </div>
-    </section>
+    </div>
 
-    <!-- ===== BVMT TAB ===== -->
-    <section id="bvmt" class="tab-pane" role="tabpanel" aria-labelledby="bvmt">
-      <!-- SAFE PLACEHOLDER (no self-nesting) -->
-      <div class="card" style="padding:0; overflow:hidden">
-        <div class="iframe-wrap" style="display:grid;place-items:center;height:360px;">
-          <p class="muted">Add your BVMT Power BI embed link here.</p>
+    <!-- STOCKS TAB -->
+    <div class="dashboard-content">
+      <div class="card-xl">
+        <div class="embed-16by9">
+          <!-- Replace SRC with your BVMT report when ready -->
+          <iframe
+            title="BVMT Stocks Dashboard"
+            src="https://app.powerbi.com/reportEmbed?reportId=f8dfb7b3-1433-4bcb-8647-3bcbce4116d3&autoAuth=true&ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730"
+            allowfullscreen
+            loading="eager"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </div>
 
-      <div class="section">
-        <h2 class="section__title">Stocks Forecasts</h2>
-        <div class="grid-4">
-          <article class="card"><h4>SARIMA Forecast</h4><img src="stocks-forecast1.png" alt="Stocks Forecast 1"></article>
-          <article class="card"><h4>Holt–Winters</h4><img src="stocks-forecast2.png" alt="Stocks Forecast 2"></article>
-          <article class="card"><h4>Prophet</h4><img src="stocks-forecast3.png" alt="Stocks Forecast 3"></article>
-          <article class="card"><h4>Seasonality</h4><img src="stocks-forecast4.png" alt="Stocks Forecast 4"></article>
+      <div class="gallery">
+        <h3>Stocks Forecasts</h3>
+        <div class="grid">
+          <div class="imgcard"><img src="stocks-forecast1.png" alt="Stocks Forecast 1"/></div>
+          <div class="imgcard"><img src="stocks-forecast2.png" alt="Stocks Forecast 2"/></div>
+          <div class="imgcard"><img src="stocks-forecast3.png" alt="Stocks Forecast 3"/></div>
+          <div class="imgcard"><img src="btc-forecast1.png" alt="Placeholder"/></div>
+          <div class="imgcard"><img src="btc-forecast2.png" alt="Placeholder"/></div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
-  <footer>© 2025 Golden Hour — Data-Driven Financial Insights.</footer>
+  <footer class="footer">
+    © 2025 Golden Hour — Data-Driven Financial Insights.
+  </footer>
+
+  <script>
+    // Tabs logic (lightweight, no dependency)
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('.dashboard-tabs button');
+      const panes = document.querySelectorAll('.dashboard-content');
+
+      function setActive(i){
+        tabs.forEach((t,idx)=> t.classList.toggle('active', idx===i));
+        panes.forEach((p,idx)=> p.classList.toggle('active', idx===i));
+      }
+      tabs.forEach((btn,i)=> btn.addEventListener('click', ()=> setActive(i)));
+      setActive(0); // default
+    });
+  </script>
 </body>
 </html>
