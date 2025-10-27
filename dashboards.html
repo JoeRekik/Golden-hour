@@ -6,6 +6,7 @@
   <title>Golden Hour — Dashboards</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
+    /* Page chrome */
     .page-header { margin: 24px auto 12px; max-width: 1200px; padding: 0 16px; }
     .subtext { color:#AAB2C0; font-size:.95rem; }
     .tabs-wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
@@ -22,6 +23,7 @@
       box-shadow: 0 6px 20px rgba(0,0,0,.35); padding:16px; margin-bottom:18px;
     }
 
+    /* 16:9 iframe wrapper */
     .embed-16by9{
       position:relative; width:100%; max-width:1200px; margin:0 auto; 
       padding-top:56.25%;
@@ -36,7 +38,7 @@
     .panel { margin-top: 1.25rem; text-align:center; }
     .panel-title { margin: 0 0 1rem; font-weight: 700; font-size: 1.15rem; color: #fff; }
 
-    /* Figures (2 per row on desktop) */
+    /* Figures grid (2 per row desktop, 1 per row mobile) */
     .figure-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -46,65 +48,66 @@
       padding: 0 16px;
       justify-content: center;
     }
+    @media (max-width: 1024px) { .figure-grid { grid-template-columns: 1fr; } }
+
     .figure-card {
       background: #161b29;
       border: 1px solid #222933;
       border-radius: 14px;
       padding: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
-      transition: transform 0.2s ease;
     }
-    .figure-card:hover { transform: scale(1.02); }
     .figure-card img {
       width: 100%;
       aspect-ratio: 16 / 9;
       object-fit: contain;
       display: block;
       border-radius: 8px;
-      cursor: zoom-in;         /* hint */
+      cursor: zoom-in;     /* clickable hint */
     }
-    .figure-card figcaption { text-align: center; color: #98a4b5; font-size: .85rem; margin-top: 6px; }
-
-    @media (max-width: 1024px) { .figure-grid { grid-template-columns: 1fr; } }
+    .figure-card figcaption {
+      text-align: center; color: #98a4b5; font-size: .85rem; margin-top: 6px;
+    }
 
     .dashboard-content{ display:none; }
     .dashboard-content.active{ display:block; }
 
-    /* ===== Lightbox (Discord-like) ===== */
-    .lightbox {
+    /* ===== Modal / Lightbox (click-to-zoom) ===== */
+    .modal {
       position: fixed;
       inset: 0;
-      background: rgba(2, 6, 15, 0.92);
-      display: none;
+      background: rgba(6,10,18,0.92);
+      display: none;           /* toggled via .open */
       align-items: center;
       justify-content: center;
       z-index: 9999;
       padding: 32px 16px;
-      cursor: zoom-out; /* hint */
       backdrop-filter: blur(2px);
     }
-    .lightbox.open { display: flex; }
+    .modal.open { display: flex; }
 
-    .lightbox-content {
-      max-width: min(1200px, 92vw);
-      max-height: 86vh;
+    .modal-inner {
+      max-width: min(1200px, 95vw);
+      max-height: 90vh;
       display: grid;
       grid-template-rows: 1fr auto;
       gap: 10px;
       animation: pop 120ms ease-out;
     }
-    .lightbox img {
+    .modal-img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       border-radius: 12px;
       box-shadow: 0 10px 28px rgba(0,0,0,.6);
       background: #0b111b;
+      cursor: zoom-out;
     }
-    .lightbox .caption {
-      color: #c9d4e3; 
+    .modal-caption {
+      color: #c9d4e3;
       text-align: center;
       font-size: .95rem;
+      user-select: none;
     }
     @keyframes pop {
       from { transform: scale(.98); opacity: .6; }
@@ -113,6 +116,7 @@
   </style>
 </head>
 <body>
+  <!-- Nav -->
   <nav>
     <div class="logo">Golden Hour</div>
     <ul>
@@ -201,17 +205,17 @@
     © 2025 Golden Hour — Data-Driven Financial Insights.
   </footer>
 
-  <!-- Lightbox root -->
-  <div id="lightbox" class="lightbox" aria-hidden="true">
-    <div class="lightbox-content" role="dialog" aria-modal="true">
-      <img id="lightbox-img" alt="">
-      <div id="lightbox-caption" class="caption"></div>
+  <!-- Modal / Lightbox -->
+  <div id="imgModal" class="modal" aria-hidden="true">
+    <div class="modal-inner" role="dialog" aria-modal="true">
+      <img id="modalImg" class="modal-img" alt="">
+      <div id="modalCaption" class="modal-caption"></div>
     </div>
   </div>
 
   <script>
     // Tabs
-    document.addEventListener('DOMContentLoaded', () => {
+    (function(){
       const tabs = document.querySelectorAll('.dashboard-tabs button');
       const panes = document.querySelectorAll('.dashboard-content');
       function setActive(i){
@@ -220,41 +224,43 @@
       }
       tabs.forEach((btn,i)=> btn.addEventListener('click', ()=> setActive(i)));
       setActive(0);
-    });
+    })();
 
-    // Lightbox logic
+    // Click-to-zoom modal (NOT hover)
     (function(){
-      const lightbox = document.getElementById('lightbox');
-      const imgEl    = document.getElementById('lightbox-img');
-      const capEl    = document.getElementById('lightbox-caption');
+      const modal = document.getElementById('imgModal');
+      const modalImg = document.getElementById('modalImg');
+      const modalCaption = document.getElementById('modalCaption');
       const zoomables = document.querySelectorAll('img.zoomable');
 
-      function openLightbox(src, alt, caption){
-        imgEl.src = src;
-        imgEl.alt = alt || '';
-        capEl.textContent = caption || alt || '';
-        lightbox.classList.add('open');
-        lightbox.setAttribute('aria-hidden','false');
+      function openModal(src, alt, caption){
+        modalImg.src = src;
+        modalImg.alt = alt || '';
+        modalCaption.textContent = caption || alt || '';
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
         document.body.style.overflow = 'hidden';
       }
-      function closeLightbox(){
-        lightbox.classList.remove('open');
-        lightbox.setAttribute('aria-hidden','true');
-        imgEl.src = '';
+      function closeModal(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        // small delay before clearing src avoids flicker on rapid re-open
+        setTimeout(()=>{ modalImg.src=''; }, 120);
         document.body.style.overflow = '';
       }
 
-      zoomables.forEach(z => {
-        z.addEventListener('click', (e) => {
-          openLightbox(z.src, z.alt, z.dataset.caption);
+      // Open on click
+      zoomables.forEach(img => {
+        img.addEventListener('click', e => {
+          openModal(img.src, img.alt, img.dataset.caption);
           e.stopPropagation();
         });
       });
 
-      // Close on overlay click or Esc
-      lightbox.addEventListener('click', closeLightbox);
-      document.addEventListener('keydown', (e) => {
-        if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+      // Close on backdrop click or Esc
+      modal.addEventListener('click', closeModal);
+      document.addEventListener('keydown', (e)=>{
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
     })();
   </script>
