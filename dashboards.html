@@ -6,7 +6,6 @@
   <title>Golden Hour — Dashboards</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    /* Page-specific tweaks for visibility */
     .page-header { margin: 24px auto 12px; max-width: 1200px; padding: 0 16px; }
     .subtext { color:#AAB2C0; font-size:.95rem; }
     .tabs-wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
@@ -23,7 +22,6 @@
       box-shadow: 0 6px 20px rgba(0,0,0,.35); padding:16px; margin-bottom:18px;
     }
 
-    /* Responsive 16:9 frame wrapper (max visibility) */
     .embed-16by9{
       position:relative; width:100%; max-width:1200px; margin:0 auto; 
       padding-top:56.25%;
@@ -34,27 +32,60 @@
       border:0; background:#0f1420;
     }
 
-    /* Forecast gallery */
-    .gallery{ max-width:1200px; margin:18px auto 28px; padding:0 16px; }
-    .gallery h3{ margin:0 0 12px; }
-    .grid{
-      display:grid; gap:12px;
-      grid-template-columns: repeat( auto-fit, minmax(220px, 1fr) );
+    /* Forecast section */
+    .panel { margin-top: 1.25rem; text-align:center; }
+    .panel-title {
+      margin: 0 0 1rem;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #fff;
     }
-    .grid .imgcard{
-      background:#151A24; border:1px solid #23293a; border-radius:12px;
-      overflow:hidden; display:flex; align-items:center; justify-content:center;
-      min-height:160px;
-    }
-    .grid .imgcard img{ width:100%; height:auto; display:block; }
 
-    /* Tab content visibility */
+    .figure-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 1200px;
+      margin: 0 auto 32px;
+      padding: 0 16px;
+    }
+
+    .figure-card {
+      background: #161b29;
+      border: 1px solid #222933;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.25);
+    }
+
+    .figure-card img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .figure-card figcaption {
+      text-align: center;
+      color: #98a4b5;
+      font-size: .85rem;
+      margin-top: 6px;
+    }
+
+    @media (max-width: 1024px) {
+      .figure-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .figure-grid { grid-template-columns: 1fr; }
+    }
+
     .dashboard-content{ display:none; }
     .dashboard-content.active{ display:block; }
   </style>
 </head>
 <body>
-  <!-- Top Nav -->
   <nav>
     <div class="logo">Golden Hour</div>
     <ul>
@@ -71,7 +102,6 @@
   </header>
 
   <section class="tabs-wrap">
-    <!-- Tabs -->
     <div class="dashboard-tabs">
       <button class="active">BTC</button>
       <button>Stocks (BVMT)</button>
@@ -81,34 +111,40 @@
     <div class="dashboard-content active">
       <div class="card-xl">
         <div class="embed-16by9">
-<iframe
-  width="1140"
-  height="541"
-  src="https://app.powerbi.com/reportEmbed?reportId=f8dfb7b3-1433-4bcb-8647-3bcbce4116d3&autoAuth=true&ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730"
-  frameborder="0"
-  allowfullscreen>
-</iframe>
-
+          <iframe
+            width="1140"
+            height="541"
+            src="https://app.powerbi.com/reportEmbed?reportId=f8dfb7b3-1433-4bcb-8647-3bcbce4116d3&autoAuth=true&ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730"
+            frameborder="0"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
 
-      <div class="gallery">
-        <h3>BTC Forecasts (2025)</h3>
-        <div class="grid">
-          <div class="imgcard"><img src="btc-forecast1.png" alt="BTC Forecast 1"/></div>
-          <div class="imgcard"><img src="btc-forecast2.png" alt="BTC Forecast 2"/></div>
-          <div class="imgcard"><img src="btc-forecast3.png" alt="BTC Forecast 3"/></div>
-          <div class="imgcard"><img src="stocks-forecast1.png" alt="Placeholder"/></div>
-          <div class="imgcard"><img src="stocks-forecast2.png" alt="Placeholder"/></div>
+      <!-- Forecast images -->
+      <section class="panel">
+        <h3 class="panel-title">BTC — Monthly Close: Forecasts for 2025</h3>
+        <div class="figure-grid">
+          <figure class="figure-card">
+            <img src="btc-forecast1.png" alt="BTC Forecast Figure 1">
+            <figcaption>Forecast Figure 1</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <img src="btc-forecast2.png" alt="BTC Forecast Figure 2">
+            <figcaption>Forecast Figure 2</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <img src="btc-forecast3.png" alt="BTC Forecast Figure 3">
+            <figcaption>Forecast Figure 3</figcaption>
+          </figure>
         </div>
-      </div>
+      </section>
     </div>
 
     <!-- STOCKS TAB -->
     <div class="dashboard-content">
       <div class="card-xl">
         <div class="embed-16by9">
-          <!-- Replace SRC with your BVMT report when ready -->
           <iframe
             title="BVMT Stocks Dashboard"
             src="https://app.powerbi.com/reportEmbed?reportId=f8dfb7b3-1433-4bcb-8647-3bcbce4116d3&autoAuth=true&ctid=604f1a96-cbe8-43f8-abbf-f8eaf5d85730"
@@ -119,16 +155,19 @@
         </div>
       </div>
 
-      <div class="gallery">
-        <h3>Stocks Forecasts</h3>
-        <div class="grid">
-          <div class="imgcard"><img src="stocks-forecast1.png" alt="Stocks Forecast 1"/></div>
-          <div class="imgcard"><img src="stocks-forecast2.png" alt="Stocks Forecast 2"/></div>
-          <div class="imgcard"><img src="stocks-forecast3.png" alt="Stocks Forecast 3"/></div>
-          <div class="imgcard"><img src="btc-forecast1.png" alt="Placeholder"/></div>
-          <div class="imgcard"><img src="btc-forecast2.png" alt="Placeholder"/></div>
+      <section class="panel">
+        <h3 class="panel-title">BVMT — Stocks Forecasts</h3>
+        <div class="figure-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <figure class="figure-card">
+            <img src="stocks-forecast1.png" alt="Stocks Forecast 1">
+            <figcaption>Forecast Figure 1</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <img src="stocks-forecast2.png" alt="Stocks Forecast 2">
+            <figcaption>Forecast Figure 2</figcaption>
+          </figure>
         </div>
-      </div>
+      </section>
     </div>
   </section>
 
@@ -137,17 +176,15 @@
   </footer>
 
   <script>
-    // Tabs logic (lightweight, no dependency)
     document.addEventListener('DOMContentLoaded', () => {
       const tabs = document.querySelectorAll('.dashboard-tabs button');
       const panes = document.querySelectorAll('.dashboard-content');
-
       function setActive(i){
         tabs.forEach((t,idx)=> t.classList.toggle('active', idx===i));
         panes.forEach((p,idx)=> p.classList.toggle('active', idx===i));
       }
       tabs.forEach((btn,i)=> btn.addEventListener('click', ()=> setActive(i)));
-      setActive(0); // default
+      setActive(0);
     });
   </script>
 </body>
