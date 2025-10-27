@@ -34,9 +34,10 @@
       border:0; background:#0f1420;
     }
 
-    /* Forecast section */
-    .panel { margin-top: 1.25rem; text-align:center; }
-    .panel-title { margin: 0 0 1rem; font-weight: 700; font-size: 1.15rem; color: #fff; }
+    /* Forecast sections */
+    .panel { margin: 24px auto 28px; text-align:center; max-width: 1200px; }
+    .panel + .panel { margin-top: 36px; }             /* more space between sections */
+    .panel-title { margin: 0 0 16px; font-weight: 700; font-size: 1.15rem; color: #fff; }
 
     /* Figures grid (2 per row desktop, 1 per row mobile) */
     .figure-grid {
@@ -44,7 +45,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 22px;
       max-width: 1100px;
-      margin: 0 auto 32px;
+      margin: 0 auto 8px;
       padding: 0 16px;
       justify-content: center;
     }
@@ -56,6 +57,8 @@
       border-radius: 14px;
       padding: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+      min-height: 220px; /* keeps visible even if an image path is wrong */
+      display: flex; flex-direction: column; justify-content: center;
     }
     .figure-card img {
       width: 100%;
@@ -64,6 +67,7 @@
       display: block;
       border-radius: 8px;
       cursor: zoom-in;     /* clickable hint */
+      background:#0e1421;
     }
     .figure-card figcaption {
       text-align: center; color: #98a4b5; font-size: .85rem; margin-top: 6px;
@@ -152,37 +156,40 @@
         </div>
       </div>
 
+      <!-- ============ SET 1 ============ -->
       <section class="panel">
         <h3 class="panel-title">BTC — Monthly Close: Forecasts for 2025</h3>
         <div class="figure-grid">
           <figure class="figure-card">
-            <img class="zoomable" src="btc-forecast1.png" alt="BTC Forecast Figure 1" data-caption="Forecast Figure 1">
+            <img class="zoomable" src="btc-forecast1.png" alt="BTC Forecast Figure 1" data-caption="Forecast Figure 1" loading="lazy">
             <figcaption>Forecast Figure 1</figcaption>
           </figure>
           <figure class="figure-card">
-            <img class="zoomable" src="btc-forecast2.png" alt="BTC Forecast Figure 2" data-caption="Forecast Figure 2">
+            <img class="zoomable" src="btc-forecast2.png" alt="BTC Forecast Figure 2" data-caption="Forecast Figure 2" loading="lazy">
             <figcaption>Forecast Figure 2</figcaption>
           </figure>
         </div>
       </section>
-      <!-- Observed vs Forecast (2025) Section -->
-<section class="panel">
-  <h3 class="panel-title">BTC — Monthly Close: Observed vs Forecast (2025)</h3>
-  <div class="figure-grid">
-    <figure class="figure-card">
-      <img class="zoomable" src="btc-observed1.png" alt="BTC Observed vs Forecast 1" data-caption="Observed vs Forecast (ARIMA)">
-      <figcaption>Observed vs Forecast (ARIMA)</figcaption>
-    </figure>
-    <figure class="figure-card">
-      <img class="zoomable" src="btc-observed2.png" alt="BTC Observed vs Forecast 2" data-caption="Actual vs Forecast (SARIMA)">
-      <figcaption>Actual vs Forecast (SARIMA)</figcaption>
-    </figure>
-    <figure class="figure-card">
-      <img class="zoomable" src="btc-observed3.png" alt="BTC Observed vs Forecast 3" data-caption="Forecast Metrics Summary">
-      <figcaption>Forecast Metrics Summary</figcaption>
-    </figure>
-  </div>
-</section>
+
+      <!-- ============ SET 2 (NEW) ============ -->
+      <section class="panel">
+        <h3 class="panel-title">BTC — Monthly Close: Observed vs Forecast (2025)</h3>
+        <div class="figure-grid">
+          <figure class="figure-card">
+            <img class="zoomable" src="btc-observed1.png" alt="BTC Observed vs Forecast 1" data-caption="Observed vs Forecast (ARIMA)" loading="lazy">
+            <figcaption>Observed vs Forecast (ARIMA)</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <img class="zoomable" src="btc-observed2.png" alt="BTC Observed vs Forecast 2" data-caption="Actual vs Forecast (SARIMA)" loading="lazy">
+            <figcaption>Actual vs Forecast (SARIMA)</figcaption>
+          </figure>
+          <figure class="figure-card">
+            <img class="zoomable" src="btc-observed3.png" alt="BTC Observed vs Forecast 3" data-caption="Forecast Metrics Summary" loading="lazy">
+            <figcaption>Forecast Metrics Summary</figcaption>
+          </figure>
+        </div>
+      </section>
+      <!-- ============ /SET 2 ============ -->
 
     </div>
 
@@ -204,11 +211,11 @@
         <h3 class="panel-title">BVMT — Stocks Forecasts</h3>
         <div class="figure-grid" style="grid-template-columns: repeat(2, 1fr);">
           <figure class="figure-card">
-            <img class="zoomable" src="stocks-forecast1.png" alt="Stocks Forecast 1" data-caption="Stocks Forecast 1">
+            <img class="zoomable" src="stocks-forecast1.png" alt="Stocks Forecast 1" data-caption="Stocks Forecast 1" loading="lazy">
             <figcaption>Forecast Figure 1</figcaption>
           </figure>
           <figure class="figure-card">
-            <img class="zoomable" src="stocks-forecast2.png" alt="Stocks Forecast 2" data-caption="Stocks Forecast 2">
+            <img class="zoomable" src="stocks-forecast2.png" alt="Stocks Forecast 2" data-caption="Stocks Forecast 2" loading="lazy">
             <figcaption>Forecast Figure 2</figcaption>
           </figure>
         </div>
@@ -229,7 +236,7 @@
   </div>
 
   <script>
-    // Tabs
+    /* Tabs */
     (function(){
       const tabs = document.querySelectorAll('.dashboard-tabs button');
       const panes = document.querySelectorAll('.dashboard-content');
@@ -241,12 +248,11 @@
       setActive(0);
     })();
 
-    // Click-to-zoom modal (NOT hover)
+    /* Click-to-zoom modal */
     (function(){
       const modal = document.getElementById('imgModal');
       const modalImg = document.getElementById('modalImg');
       const modalCaption = document.getElementById('modalCaption');
-      const zoomables = document.querySelectorAll('img.zoomable');
 
       function openModal(src, alt, caption){
         modalImg.src = src;
@@ -259,21 +265,20 @@
       function closeModal(){
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden','true');
-        // small delay before clearing src avoids flicker on rapid re-open
         setTimeout(()=>{ modalImg.src=''; }, 120);
         document.body.style.overflow = '';
       }
 
-      // Open on click
-      zoomables.forEach(img => {
-        img.addEventListener('click', e => {
+      document.addEventListener('click', (e)=>{
+        const img = e.target.closest('img.zoomable');
+        if (img) {
           openModal(img.src, img.alt, img.dataset.caption);
           e.stopPropagation();
-        });
+        } else if (e.target.closest('#imgModal')) {
+          closeModal();
+        }
       });
 
-      // Close on backdrop click or Esc
-      modal.addEventListener('click', closeModal);
       document.addEventListener('keydown', (e)=>{
         if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
