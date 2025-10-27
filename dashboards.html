@@ -34,11 +34,12 @@
       border:0; background:#0f1420;
     }
 
-    /* Panels / figures */
+    /* Forecast sections */
     .panel { margin: 24px auto 28px; text-align:center; max-width: 1200px; }
     .panel + .panel { margin-top: 36px; }
     .panel-title { margin: 0 0 16px; font-weight: 700; font-size: 1.15rem; color: #fff; }
 
+    /* Figures grid (2 per row desktop, 1 per row mobile) */
     .figure-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -49,6 +50,8 @@
       justify-content: center;
     }
     @media (max-width: 1024px) { .figure-grid { grid-template-columns: 1fr; } }
+    /* single-column narrow blocks */
+    .figure-grid.one { grid-template-columns: 1fr; max-width: 900px; }
 
     .figure-card {
       background: #161b29;
@@ -75,12 +78,12 @@
     .dashboard-content{ display:none; }
     .dashboard-content.active{ display:block; }
 
-    /* Modal / Lightbox */
+    /* ===== Modal / Lightbox ===== */
     .modal {
       position: fixed;
       inset: 0;
       background: rgba(6,10,18,0.92);
-      display: none;
+      display: none;           /* toggled via .open */
       align-items: center;
       justify-content: center;
       z-index: 9999;
@@ -119,6 +122,7 @@
   </style>
 </head>
 <body>
+  <!-- Nav -->
   <nav>
     <div class="logo">Golden Hour</div>
     <ul>
@@ -154,7 +158,7 @@
         </div>
       </div>
 
-      <!-- Set 1: BTC Forecasts -->
+      <!-- Set 1 -->
       <section class="panel">
         <h3 class="panel-title">BTC — Monthly Close: Forecasts for 2025</h3>
         <div class="figure-grid">
@@ -169,29 +173,29 @@
         </div>
       </section>
 
-      <!-- Set 2: Observed vs Forecast -->
+      <!-- Set 2 -->
       <section class="panel">
         <h3 class="panel-title">BTC — Monthly Close: Observed vs Forecast (2025)</h3>
         <div class="figure-grid">
           <figure class="figure-card">
-            <img class="zoomable" src="btc-observed1.png" alt="Observed vs Forecast (ARIMA)" data-caption="Observed vs Forecast (ARIMA)" loading="lazy">
+            <img class="zoomable" src="btc-observed1.png" alt="BTC Observed vs Forecast 1" data-caption="Observed vs Forecast (ARIMA)" loading="lazy">
             <figcaption>Observed vs Forecast (ARIMA)</figcaption>
           </figure>
           <figure class="figure-card">
-            <img class="zoomable" src="btc-observed2.png" alt="Actual vs Forecast (SARIMA)" data-caption="Actual vs Forecast (SARIMA)" loading="lazy">
+            <img class="zoomable" src="btc-observed2.png" alt="BTC Observed vs Forecast 2" data-caption="Actual vs Forecast (SARIMA)" loading="lazy">
             <figcaption>Actual vs Forecast (SARIMA)</figcaption>
           </figure>
           <figure class="figure-card">
-            <img class="zoomable" src="btc-observed3.png" alt="Forecast Metrics Summary" data-caption="Forecast Metrics Summary" loading="lazy">
+            <img class="zoomable" src="btc-observed3.png" alt="BTC Observed vs Forecast 3" data-caption="Forecast Metrics Summary" loading="lazy">
             <figcaption>Forecast Metrics Summary</figcaption>
           </figure>
         </div>
       </section>
 
-      <!-- Set 3: Seasonality -->
+      <!-- Set 3: Seasonality (moved under BTC tab) -->
       <section class="panel">
         <h3 class="panel-title">BTC — Seasonality: Average Monthly Indices</h3>
-        <div class="figure-grid" style="grid-template-columns: 1fr; max-width: 900px;">
+        <div class="figure-grid one">
           <figure class="figure-card">
             <img class="zoomable"
                  src="btc-seasonality.png"
@@ -202,10 +206,10 @@
         </div>
       </section>
 
-      <!-- Set 4: Correlation -->
+      <!-- Set 4: Correlation (moved under BTC tab) -->
       <section class="panel">
         <h3 class="panel-title">BTC — Correlation Heatmap (Monthly Indicators)</h3>
-        <div class="figure-grid" style="grid-template-columns: 1fr; max-width: 900px;">
+        <div class="figure-grid one">
           <figure class="figure-card">
             <img class="zoomable"
                  src="btc-corr-heatmap.png"
@@ -218,7 +222,7 @@
     </div>
     <!-- =============== /BTC TAB ================= -->
 
-    <!-- ============== STOCKS TAB ============== -->
+    <!-- ============== STOCKS TAB =============== -->
     <div class="dashboard-content">
       <div class="card-xl">
         <div class="embed-16by9">
@@ -245,8 +249,9 @@
           </figure>
         </div>
       </section>
+      <!-- (No BTC visuals here anymore) -->
     </div>
-    <!-- ============ /STOCKS TAB ============ -->
+    <!-- ============ /STOCKS TAB ============== -->
   </section>
 
   <footer class="footer">
