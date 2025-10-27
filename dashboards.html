@@ -34,14 +34,9 @@
 
     /* Forecast section */
     .panel { margin-top: 1.25rem; text-align:center; }
-    .panel-title {
-      margin: 0 0 1rem;
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: #fff;
-    }
+    .panel-title { margin: 0 0 1rem; font-weight: 700; font-size: 1.15rem; color: #fff; }
 
-    /* === Updated Figure Grid === */
+    /* Figures (2 per row on desktop) */
     .figure-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -51,7 +46,6 @@
       padding: 0 16px;
       justify-content: center;
     }
-
     .figure-card {
       background: #161b29;
       border: 1px solid #222933;
@@ -60,33 +54,62 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
       transition: transform 0.2s ease;
     }
-
-    .figure-card:hover {
-      transform: scale(1.02);
-    }
-
+    .figure-card:hover { transform: scale(1.02); }
     .figure-card img {
       width: 100%;
       aspect-ratio: 16 / 9;
       object-fit: contain;
       display: block;
       border-radius: 8px;
+      cursor: zoom-in;         /* hint */
     }
+    .figure-card figcaption { text-align: center; color: #98a4b5; font-size: .85rem; margin-top: 6px; }
 
-    .figure-card figcaption {
-      text-align: center;
-      color: #98a4b5;
-      font-size: .85rem;
-      margin-top: 6px;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .figure-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 1024px) { .figure-grid { grid-template-columns: 1fr; } }
 
     .dashboard-content{ display:none; }
     .dashboard-content.active{ display:block; }
+
+    /* ===== Lightbox (Discord-like) ===== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 15, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 32px 16px;
+      cursor: zoom-out; /* hint */
+      backdrop-filter: blur(2px);
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox-content {
+      max-width: min(1200px, 92vw);
+      max-height: 86vh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 10px;
+      animation: pop 120ms ease-out;
+    }
+    .lightbox img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.6);
+      background: #0b111b;
+    }
+    .lightbox .caption {
+      color: #c9d4e3; 
+      text-align: center;
+      font-size: .95rem;
+    }
+    @keyframes pop {
+      from { transform: scale(.98); opacity: .6; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -125,20 +148,19 @@
         </div>
       </div>
 
-      <!-- Forecast images -->
       <section class="panel">
         <h3 class="panel-title">BTC — Monthly Close: Forecasts for 2025</h3>
         <div class="figure-grid">
           <figure class="figure-card">
-            <img src="btc-forecast1.png" alt="BTC Forecast Figure 1">
+            <img class="zoomable" src="btc-forecast1.png" alt="BTC Forecast Figure 1" data-caption="Forecast Figure 1">
             <figcaption>Forecast Figure 1</figcaption>
           </figure>
           <figure class="figure-card">
-            <img src="btc-forecast2.png" alt="BTC Forecast Figure 2">
+            <img class="zoomable" src="btc-forecast2.png" alt="BTC Forecast Figure 2" data-caption="Forecast Figure 2">
             <figcaption>Forecast Figure 2</figcaption>
           </figure>
           <figure class="figure-card">
-            <img src="btc-forecast3.png" alt="BTC Forecast Figure 3">
+            <img class="zoomable" src="btc-forecast3.png" alt="BTC Forecast Figure 3" data-caption="Forecast Figure 3">
             <figcaption>Forecast Figure 3</figcaption>
           </figure>
         </div>
@@ -163,11 +185,11 @@
         <h3 class="panel-title">BVMT — Stocks Forecasts</h3>
         <div class="figure-grid" style="grid-template-columns: repeat(2, 1fr);">
           <figure class="figure-card">
-            <img src="stocks-forecast1.png" alt="Stocks Forecast 1">
+            <img class="zoomable" src="stocks-forecast1.png" alt="Stocks Forecast 1" data-caption="Stocks Forecast 1">
             <figcaption>Forecast Figure 1</figcaption>
           </figure>
           <figure class="figure-card">
-            <img src="stocks-forecast2.png" alt="Stocks Forecast 2">
+            <img class="zoomable" src="stocks-forecast2.png" alt="Stocks Forecast 2" data-caption="Stocks Forecast 2">
             <figcaption>Forecast Figure 2</figcaption>
           </figure>
         </div>
@@ -179,7 +201,16 @@
     © 2025 Golden Hour — Data-Driven Financial Insights.
   </footer>
 
+  <!-- Lightbox root -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <div class="lightbox-content" role="dialog" aria-modal="true">
+      <img id="lightbox-img" alt="">
+      <div id="lightbox-caption" class="caption"></div>
+    </div>
+  </div>
+
   <script>
+    // Tabs
     document.addEventListener('DOMContentLoaded', () => {
       const tabs = document.querySelectorAll('.dashboard-tabs button');
       const panes = document.querySelectorAll('.dashboard-content');
@@ -190,6 +221,42 @@
       tabs.forEach((btn,i)=> btn.addEventListener('click', ()=> setActive(i)));
       setActive(0);
     });
+
+    // Lightbox logic
+    (function(){
+      const lightbox = document.getElementById('lightbox');
+      const imgEl    = document.getElementById('lightbox-img');
+      const capEl    = document.getElementById('lightbox-caption');
+      const zoomables = document.querySelectorAll('img.zoomable');
+
+      function openLightbox(src, alt, caption){
+        imgEl.src = src;
+        imgEl.alt = alt || '';
+        capEl.textContent = caption || alt || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox(){
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden','true');
+        imgEl.src = '';
+        document.body.style.overflow = '';
+      }
+
+      zoomables.forEach(z => {
+        z.addEventListener('click', (e) => {
+          openLightbox(z.src, z.alt, z.dataset.caption);
+          e.stopPropagation();
+        });
+      });
+
+      // Close on overlay click or Esc
+      lightbox.addEventListener('click', closeLightbox);
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+      });
+    })();
   </script>
 </body>
 </html>
