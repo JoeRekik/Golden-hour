@@ -295,5 +295,15 @@
       });
     })();
   </script>
+  <script>
+  // Remove any leftover "BVMT — Stocks Forecasts" section if it still exists
+  document.querySelectorAll('section.panel').forEach(sec => {
+    const h = sec.querySelector('h3.panel-title');
+    if (h && h.textContent.trim() === 'BVMT — Stocks Forecasts') {
+      sec.remove();
+    }
+  });
+</script>
+
 </body>
 </html>
