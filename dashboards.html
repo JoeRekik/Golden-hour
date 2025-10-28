@@ -34,12 +34,11 @@
       border:0; background:#0f1420;
     }
 
-    /* Forecast sections */
+    /* Panels & figures */
     .panel { margin: 24px auto 28px; text-align:center; max-width: 1200px; }
     .panel + .panel { margin-top: 36px; }
     .panel-title { margin: 0 0 16px; font-weight: 700; font-size: 1.15rem; color: #fff; }
 
-    /* Figures grid (2 per row desktop, 1 per row mobile) */
     .figure-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -50,8 +49,6 @@
       justify-content: center;
     }
     @media (max-width: 1024px) { .figure-grid { grid-template-columns: 1fr; } }
-    /* single-column narrow blocks */
-    .figure-grid.one { grid-template-columns: 1fr; max-width: 900px; }
 
     .figure-card {
       background: #161b29;
@@ -78,51 +75,20 @@
     .dashboard-content{ display:none; }
     .dashboard-content.active{ display:block; }
 
-    /* ===== Modal / Lightbox ===== */
+    /* Lightbox */
     .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(6,10,18,0.92);
-      display: none;           /* toggled via .open */
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 32px 16px;
-      backdrop-filter: blur(2px);
+      position: fixed; inset: 0; background: rgba(6,10,18,0.92);
+      display: none; align-items: center; justify-content: center;
+      z-index: 9999; padding: 32px 16px; backdrop-filter: blur(2px);
     }
     .modal.open { display: flex; }
-
-    .modal-inner {
-      max-width: min(1200px, 95vw);
-      max-height: 90vh;
-      display: grid;
-      grid-template-rows: 1fr auto;
-      gap: 10px;
-      animation: pop 120ms ease-out;
-    }
-    .modal-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 12px;
-      box-shadow: 0 10px 28px rgba(0,0,0,.6);
-      background: #0b111b;
-      cursor: zoom-out;
-    }
-    .modal-caption {
-      color: #c9d4e3;
-      text-align: center;
-      font-size: .95rem;
-      user-select: none;
-    }
-    @keyframes pop {
-      from { transform: scale(.98); opacity: .6; }
-      to   { transform: scale(1);   opacity: 1; }
-    }
+    .modal-inner { max-width: min(1200px, 95vw); max-height: 90vh; display: grid; grid-template-rows: 1fr auto; gap: 10px; animation: pop 120ms ease-out; }
+    .modal-img { width: 100%; height: 100%; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 28px rgba(0,0,0,.6); background:#0b111b; cursor: zoom-out; }
+    .modal-caption { color:#c9d4e3; text-align:center; font-size:.95rem; user-select:none; }
+    @keyframes pop { from { transform: scale(.98); opacity:.6; } to { transform: scale(1); opacity:1; } }
   </style>
 </head>
 <body>
-  <!-- Nav -->
   <nav>
     <div class="logo">Golden Hour</div>
     <ul>
@@ -144,7 +110,7 @@
       <button>Stocks (BVMT)</button>
     </div>
 
-    <!-- ================= BTC TAB ================= -->
+    <!-- ========= BTC TAB ========= -->
     <div class="dashboard-content active">
       <div class="card-xl">
         <div class="embed-16by9">
@@ -158,7 +124,7 @@
         </div>
       </div>
 
-      <!-- Set 1 -->
+      <!-- BTC set 1 -->
       <section class="panel">
         <h3 class="panel-title">BTC — Monthly Close: Forecasts for 2025</h3>
         <div class="figure-grid">
@@ -173,56 +139,27 @@
         </div>
       </section>
 
-      <!-- Set 2 -->
+      <!-- BTC set 2 -->
       <section class="panel">
         <h3 class="panel-title">BTC — Monthly Close: Observed vs Forecast (2025)</h3>
         <div class="figure-grid">
           <figure class="figure-card">
-            <img class="zoomable" src="btc-observed1.png" alt="BTC Observed vs Forecast 1" data-caption="Observed vs Forecast (ARIMA)" loading="lazy">
+            <img class="zoomable" src="btc-observed1.png" alt="Observed vs Forecast (ARIMA)" data-caption="Observed vs Forecast (ARIMA)" loading="lazy">
             <figcaption>Observed vs Forecast (ARIMA)</figcaption>
           </figure>
           <figure class="figure-card">
-            <img class="zoomable" src="btc-observed2.png" alt="BTC Observed vs Forecast 2" data-caption="Actual vs Forecast (SARIMA)" loading="lazy">
+            <img class="zoomable" src="btc-observed2.png" alt="Actual vs Forecast (SARIMA)" data-caption="Actual vs Forecast (SARIMA)" loading="lazy">
             <figcaption>Actual vs Forecast (SARIMA)</figcaption>
           </figure>
           <figure class="figure-card">
-            <img class="zoomable" src="btc-observed3.png" alt="BTC Observed vs Forecast 3" data-caption="Forecast Metrics Summary" loading="lazy">
+            <img class="zoomable" src="btc-observed3.png" alt="Forecast Metrics Summary" data-caption="Forecast Metrics Summary" loading="lazy">
             <figcaption>Forecast Metrics Summary</figcaption>
           </figure>
         </div>
       </section>
-
-      <!-- Set 3: Seasonality (moved under BTC tab) -->
-      <section class="panel">
-        <h3 class="panel-title">BTC — Seasonality: Average Monthly Indices</h3>
-        <div class="figure-grid one">
-          <figure class="figure-card">
-            <img class="zoomable"
-                 src="btc-seasonality.png"
-                 alt="Average seasonal indices by month (sorted)"
-                 data-caption="Average seasonal indices by month (sorted)">
-            <figcaption>Average seasonal indices by month (sorted)</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <!-- Set 4: Correlation (moved under BTC tab) -->
-      <section class="panel">
-        <h3 class="panel-title">BTC — Correlation Heatmap (Monthly Indicators)</h3>
-        <div class="figure-grid one">
-          <figure class="figure-card">
-            <img class="zoomable"
-                 src="btc-corr-heatmap.png"
-                 alt="Correlation heatmap — BTC monthly indicators"
-                 data-caption="Correlation heatmap — BTC monthly indicators">
-            <figcaption>Correlation across Close, Volume, ReturnPct, MA_12, Vol_12</figcaption>
-          </figure>
-        </div>
-      </section>
     </div>
-    <!-- =============== /BTC TAB ================= -->
 
-    <!-- ============== STOCKS TAB =============== -->
+    <!-- ========= STOCKS (BVMT) TAB ========= -->
     <div class="dashboard-content">
       <div class="card-xl">
         <div class="embed-16by9">
@@ -236,6 +173,7 @@
         </div>
       </div>
 
+      <!-- Quick 2-figure gallery if you still want it -->
       <section class="panel">
         <h3 class="panel-title">BVMT — Stocks Forecasts</h3>
         <div class="figure-grid" style="grid-template-columns: repeat(2, 1fr);">
@@ -249,9 +187,64 @@
           </figure>
         </div>
       </section>
-      <!-- (No BTC visuals here anymore) -->
+
+      <!-- NEW: four single-image sections -->
+      <section class="panel">
+        <h3 class="panel-title">ONE TECH HOLDING — ARIMA Forecast (Next 12 months)</h3>
+        <div class="figure-grid" style="grid-template-columns: 1fr; max-width: 900px;">
+          <figure class="figure-card">
+            <img class="zoomable"
+                 src="bvmt-one-tech-forecast.png"
+                 alt="ONE TECH HOLDING — ARIMA Forecast (Next 12 months)"
+                 data-caption="ONE TECH HOLDING — ARIMA Forecast (Next 12 months)"
+                 loading="lazy">
+            <figcaption>ONE TECH HOLDING — ARIMA Forecast (Next 12 months)</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3 class="panel-title">SAH — SARIMA Forecast (Next 12 months)</h3>
+        <div class="figure-grid" style="grid-template-columns: 1fr; max-width: 900px;">
+          <figure class="figure-card">
+            <img class="zoomable"
+                 src="bvmt-sah-forecast.png"
+                 alt="SAH — SARIMA Forecast (Next 12 months)"
+                 data-caption="SAH — SARIMA Forecast (Next 12 months)"
+                 loading="lazy">
+            <figcaption>SAH — SARIMA Forecast (Next 12 months)</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3 class="panel-title">SFBT — SARIMA Forecast (Next 12 months)</h3>
+        <div class="figure-grid" style="grid-template-columns: 1fr; max-width: 900px;">
+          <figure class="figure-card">
+            <img class="zoomable"
+                 src="bvmt-sfbt-forecast.png"
+                 alt="SFBT — SARIMA Forecast (Next 12 months)"
+                 data-caption="SFBT — SARIMA Forecast (Next 12 months)"
+                 loading="lazy">
+            <figcaption>SFBT — SARIMA Forecast (Next 12 months)</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h3 class="panel-title">Fixed-model summary (3 selections)</h3>
+        <div class="figure-grid" style="grid-template-columns: 1fr; max-width: 900px;">
+          <figure class="figure-card">
+            <img class="zoomable"
+                 src="bvmt-model-summary.png"
+                 alt="Fixed-model summary (3 selections)"
+                 data-caption="Fixed-model summary (3 selections)"
+                 loading="lazy">
+            <figcaption>Fixed-model summary (3 selections)</figcaption>
+          </figure>
+        </div>
+      </section>
     </div>
-    <!-- ============ /STOCKS TAB ============== -->
   </section>
 
   <footer class="footer">
@@ -279,7 +272,7 @@
       setActive(0);
     })();
 
-    /* Click-to-zoom modal */
+    /* Click-to-zoom lightbox */
     (function(){
       const modal = document.getElementById('imgModal');
       const modalImg = document.getElementById('modalImg');
